@@ -48,3 +48,39 @@
     top: 0px; 
     position: absolute;
 }
+
+
+
+
+.menu_content{
+    width: 128px; 
+    left: 0px; 
+    top: 0px; 
+    position: absolute; 
+    text-align: center; 
+    justify-content: center; 
+    display: flex; 
+    flex-direction: column; 
+    color: white; 
+    font-size: 16px; 
+    font-family: Montserrat; 
+    font-weight: 500; 
+    line-height: 23px; 
+    word-wrap: break-word;
+}
+
+.MarcaMicael{
+    width: 317px; 
+    height: 132px; 
+    left: 57px; 
+    top: 19.91px; 
+    position: absolute; 
+    overflow: hidden;
+}
+.MicaelMarca1{
+    width: 310.41px; 
+    height: 125.19px; 
+    left: 3.30px; 
+    top: 3.40px; 
+    position: absolute;
+}
