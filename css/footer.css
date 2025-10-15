@@ -1,0 +1,50 @@
+.Footer{
+    width: 430px; 
+    height: 801px; 
+    left: 0px; 
+    position: absolute; 
+    overflow: hidden;
+}
+
+.Footer2{
+    width: 430px; 
+    height: 801px; 
+    left: 0px; 
+    top: 0px; 
+    position: absolute; 
+    overflow: hidden;
+}
+
+.Footer3{
+    width: 431px; 
+    height: 801px; 
+    left: -1px; 
+    top: 0px; 
+    position: absolute; 
+    background: linear-gradient(180deg, #824C91 0%, #4C2C53 100%); 
+    overflow: hidden;
+}
+
+.Redes{
+    width: 76px; 
+    height: 20px; 
+    left: 177px; 
+    top: 750px; 
+    position: absolute; 
+    overflow: hidden;
+}
+.Youtube{
+    left: 24.50px; 
+    top: 0px; 
+    position: absolute;
+}
+.Instagram{
+    left: 55px; 
+    top: 0px; 
+    position: absolute;
+}
+.Facebook{
+    left: 2px; 
+    top: 0px; 
+    position: absolute;
+}

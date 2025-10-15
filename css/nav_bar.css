@@ -1,0 +1,43 @@
+
+
+
+.NavBar{
+    width: 430px; 
+    height: 151.62px; 
+    left: 0.24px; 
+    top: 0px; 
+    position: absolute; 
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.RectangleNavBar{
+    width: 429.87px; 
+    height: 151.38px; 
+    left: 0.13px; 
+    top: 0.24px; 
+    position: absolute; 
+    background: linear-gradient(89deg, #542853 0%, #542853 17%, #954B97 98%, #954B97 100%);
+}
+
+.MarcaMicael{
+    width: 269.15px; 
+    height: 112.07px; 
+    left: 21px; 
+    top: 19.77px; 
+    position: absolute; 
+    overflow: hidden;
+}
+
+.Menu{
+    left: 336.97px; 
+    top: 67.15px; 
+    position: absolute;
+}
+
+.MicaelMarca1{
+    width: 263.55px; 
+    height: 106.30px; 
+    left: 2.80px; 
+    top: 2.89px; 
+    position: absolute;
+}
