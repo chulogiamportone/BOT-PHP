@@ -9,13 +9,17 @@
     <!-- Tipografía montserrat -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
 
     <!-- AOS CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" />
     <link rel="stylesheet" href="css/nav_bar.css">
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="puntogis-12.ico">
+    
+    <script src="js/burguer.js"></script>
+
 </head>
 
 <body>
@@ -25,7 +29,7 @@
             <div class="MarcaMicael">
                 <img class="MicaelMarca1" src="images/navbar/Micael_marca.png" alt="Micael marca 1">
             </div>
-            <div data-svg-wrapper data-layer="menu" class="Menu">
+            <div class="Menu" id="menuButton">
                 <svg width="29" height="18" viewBox="0 0 29 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <rect x="0.209473" y="0.153809" width="28.2395" height="3.10283" fill="white" />
                     <rect x="0.209473" y="7.25659" width="28.2395" height="3.10283" fill="white" />
@@ -34,7 +38,32 @@
             </div>
         </div>
     </section>
+    <section name="Menu_section">
+        <div class="Menu2" id="menuContent">
+            <div data-layer="Rectangle 10" class="Rectangle10">
+            </div>
+            <div class="menu_item" style="top: 16.06px;">
+                <button class="menu_button" data-view="tratamientos">Tratamientos</button>
+            </div>
+            <div class="menu_item" style="top: 60.69px;">
+                <button class="menu_button" data-view="profesionales">Profesionales</button>
+            </div>
+            <div class="menu_item" style="top: 105.32px;">
+                <button class="menu_button" data-view="domicilio">Domicilio</button>
+            </div>
+            <div class="menu_item" style="top: 149.95px;">
+                <button class="menu_button" data-view="contacto">Contacto</button>
+            </div>
+            <div class="menu_item" style="top: 194.58px;">
+                <button class="menu_button" data-view="blog">Blog</button>
+            </div>
+        </div>
+        
+
+    </section>
+
     <!-- AOS Animation Library -->
     <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+</body>
 
-</body> </html>
+</html>

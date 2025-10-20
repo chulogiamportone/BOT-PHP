@@ -1,0 +1,16 @@
+[
+  {
+    "id": 1,
+    "title": "Megadosis Vitamina C",
+    "description": "Refuerzo radical del sistema inmune. Altas dosis de Vitamina C que combate la inflamación crónica y promover los procesos de regeneración celular.",
+    "image": "data:image/png",
+    "position": { "left": 30, "top": 1092 }
+  },
+  {
+    "id": 2,
+    "title": "Otro Tratamiento",
+    "description": "Descripción del tratamiento...",
+    "image": "data:image/png",
+    "position": { "left": 30, "top": 1280 }
+  }
+]
