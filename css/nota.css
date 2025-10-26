@@ -1,0 +1,111 @@
+.notas-body {
+  position: relative;
+  width: 430px;
+  margin: 0 auto;
+  font-family: "Montserrat", sans-serif;
+  color: black;
+}
+
+h2, h3, h4 {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: black;
+}
+
+h2 {
+  font-size: 18px;
+  text-align: center;
+  margin: 20px 0;
+}
+
+h3 {
+  font-size: 14px;
+  margin-top: 20px;
+}
+
+h4 {
+  font-size: 14px;
+  color: #824C91;
+  font-weight: 600;
+  margin-top: 15px;
+  display: inline;
+}
+
+p {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.5;
+  margin-bottom: 10px;
+}
+
+.texto {
+  width: 370px;
+  margin: 0 auto;
+}
+
+.texto-1 {
+  margin-top: 10px;
+}
+
+.megadosis-image {
+  width: 370px;
+  height: 279px;
+  margin: 20px auto;
+  background: #d9d9d9;
+  overflow: hidden;
+  border-radius: 4px;
+}
+
+.megadosis-image img {
+  width: 100%;
+  height: auto;
+  position: relative;
+  top: -80px;
+}
+
+.boton-solicitar {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.boton-solicitar button {
+  width: 200px;
+  height: 24px;
+  border: none;
+  border-radius: 5px;
+  background: linear-gradient(89deg, #542853 0%, #954B97 100%);
+  color: white;
+  font-size: 12px;
+  font-weight: 600;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+}
+
+.botones-navegacion {
+  display: flex;
+  justify-content: space-between;
+  width: 370px;
+  margin: 30px auto;
+}
+
+.botones-navegacion button {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  border: none;
+  background: none;
+  color: #824C91;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn-siguiente svg {
+  transform: translateY(1px);
+}
+
+.btn-anterior svg {
+  transform: translateY(1px) rotate(180deg);
+}

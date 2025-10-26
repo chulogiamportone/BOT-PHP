@@ -1,12 +1,36 @@
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex; /* Para centrar el contenedor principal */
+    
+    min-height: 5500px; /* Para que el body ocupe al menos toda la altura de la ventana */
+    background-color: #f0f0f0; /* Un color de fondo para ver el efecto */
+}
+
+.main-wrapper {
+    width: 430px; /* Ancho fijo de 430px */
+    
+    background-color: white; /* Fondo blanco para el contenido */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra sutil para destacarlo */
+     /* Para que los elementos absolutos dentro se posicionen respecto a este */
+    overflow: hidden; /* Para que el contenido no se desborde */
+}
+
+/* Asegúrate de que los elementos dentro de .main-wrapper no excedan los 430px */
+/* Por ejemplo, si tienes elementos con width: 100%, se referirán al 100% de 430px */
+
+
 /*CONTACTO*/
 
 
 .contacto-container {
   width: 429px;
   height: 900px;
-  left: 0.50px; 
-  top: 2965px; 
-  position: absolute; 
+  left: 0.50px;
+  top: 2965px;
+  position: absolute;
   overflow: hidden;
 }
 
@@ -201,5 +225,326 @@
 
 
 
+body {
+  font-family: 'Montserrat', sans-serif;
+  margin: 0;
+  padding: 0;
+}
 
 
+
+/* --- BIENVENIDA --- */
+
+
+#Bienvenida_Section {
+  width: 430px;
+  height: 150px;
+  position: absolute;
+  left: 0;
+  top: 449px;
+
+}
+
+.BienvenidosAMicael {
+  width: 430px;
+  height: 150px;
+  position: absolute;
+  left: 0;
+  top: 0px;
+  overflow: hidden;
+}
+
+.Bienvenida_text {
+  width: 367px;
+  height: 114px;
+  position: absolute;
+  left: 31px;
+  top: 63px;
+  text-align: center;
+  color: #444;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.BienvenidosAMicael_text {
+  width: 264px;
+  height: 40px;
+  position: absolute;
+  left: 83px;
+  top: 34px;
+  text-align: center;
+  color: black;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+/* --- AGENDA --- */
+#Agenda_Index {
+  width: 430px;
+  height: 224px;
+  position: absolute;
+  left: 0;
+  top: 620px;
+
+}
+
+.Agenda {
+  width: 430px;
+  height: 224px;
+  position: absolute;
+  left: 0;
+  top: 0px;
+  background: linear-gradient(180deg, #824C91 0%, #4C2C53 100%);
+  overflow: hidden;
+}
+
+.Rectangle11 {
+  width: 273px;
+  height: 29px;
+  left: 82px;
+  top: 176px;
+  position: absolute;
+  background: #D9D9D9;
+  border-radius: 9px;
+}
+
+.AgendeSuPrimeraConsulta {
+  width: 237px;
+  height: 41px;
+  left: 104px;
+  top: 183px;
+  position: absolute;
+  text-align: center;
+  color: #4C2C53;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.Agenda_text {
+  width: 356px;
+  height: 126px;
+  left: 41px;
+  top: 79px;
+  position: absolute;
+  text-align: center;
+  color: white;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.Agenda_text2 {
+  width: 310px;
+  height: 49px;
+  left: 68px;
+  top: 22px;
+  position: absolute;
+  text-align: center;
+  color: white;
+  font-size: 17px;
+  font-weight: 800;
+}
+
+/* --- TRATAMIENTOS --- */
+#Tratamientos_Index{
+  width: 430px;
+  height: 1400px;
+  position: absolute;
+  left: 0;
+  top: 2100px;
+}
+.Tratamientos {
+  width: 430px;
+  height: 342px;
+  position: absolute;
+  left: 0;
+  top: 0px;
+  overflow: hidden;
+}
+
+.Tratamientos_text {
+  width: 367px;
+  height: 114px;
+  left: 31px;
+  top: 243px;
+  position: absolute;
+  text-align: center;
+  color: #444;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.Tratamientos_title {
+  width: 264px;
+  height: 40px;
+  left: 83px;
+  top: 214px;
+  position: absolute;
+  text-align: center;
+  color: black;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.Imagen {
+  width: 430px;
+  height: 214px;
+  position: absolute;
+  top: 0;
+  overflow: hidden;
+}
+
+.EstetoscopioPixabay1 {
+  width: 460px;
+  height: 307px;
+  left: -19px;
+  top: 0px;
+  position: absolute;
+  opacity: 0.5;
+}
+
+#cards-container {
+  width: 430px;
+  height: 1456px;
+  position: absolute;
+  top: 350px;
+  background: white;
+  overflow: hidden;
+}
+
+/* --- DOMICILIO --- */
+#Domicilio_Index {
+  width: 430px;
+  height: 286px;
+  position: absolute;
+  left: 0;
+  top: 2300px;
+}
+.Domicilio {
+  width: 430px;
+  height: 286px;
+  position: absolute;
+  top: 0px;
+  overflow: hidden;
+}
+
+.Domicilio_title {
+  width: 264px;
+  height: 40px;
+  left: 28px;
+  top: 15px;
+  position: absolute;
+  color: black;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.EmilioJofre {
+  width: 367px;
+  height: 16px;
+  left: 31px;
+  top: 41px;
+  position: absolute;
+  color: #444;
+  font-size: 13px;
+}
+
+.EmilioJofre .bold {
+  font-weight: 700;
+}
+
+.Gps {
+  width: 368px;
+  height: 204px;
+  left: 30px;
+  top: 82px;
+  position: absolute;
+  overflow: hidden;
+}
+.Gps iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+
+/* --- CONTACTO --- */
+#Contacto_Index {
+  width: 430px;
+  height: 900px;
+  position: absolute;
+  left: 0;
+  top: 2600px;
+}
+
+.contacto-container {
+  width: 429px;
+  height: 900px;
+  position: absolute;
+  top: 0px;
+  left: 0.5px;
+  overflow: hidden;
+}
+
+.contacto-content {
+  width: 372.5px;
+  margin: 56px 28.26px;
+}
+
+.contacto-title {
+  width: 100%;
+  height: 40px;
+  display: block;
+  text-align: center;
+  font-weight: 700;
+}
+
+.whatsapp-info,
+.form-description {
+  font-size: 14px;
+  color: #444;
+}
+
+/* --- BLOG --- */
+.Blog {
+  width: 430px;
+  height: 703px;
+  position: absolute;
+  top: 4000px;
+  overflow: hidden;
+}
+
+.LoUltimo {
+  width: 330px;
+  height: 40px;
+  left: 50.26px;
+  top: 30px;
+  position: absolute;
+  text-align: center;
+  color: black;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.Frame9,
+.Frame10,
+.Frame11,
+.Frame9_overlay,
+.Frame10_second {
+  position: absolute;
+}
+
+.Frame11 {
+  width: 399px;
+  height: 64px;
+  opacity: 0.39;
+  background: black;
+}
+
+.Blog_text {
+  width: 324px;
+  height: 68px;
+  text-align: center;
+  color: white;
+  font-size: 16px;
+  font-weight: 700;
+}

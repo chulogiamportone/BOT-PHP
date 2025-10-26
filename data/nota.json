@@ -1,0 +1,85 @@
+{
+  "notas": [
+    {
+      "id": "vitamina-c",
+      "titulo": "Megadosis de Vitamina C <br> ¿Qué es? ¿Cuáles son sus beneficios?",
+      "imagen": "images/Home/Notas/nota1home.png",
+      "texto": [
+        "La <strong>Vitamina C</strong>, conocida como <em>ácido ascórbico</em>, es un nutriente hidrosoluble que actúa como antioxidante, protegiendo las células del daño causado por los radicales libres.",
+        "Las megadosis son aplicaciones de dosis elevadas de Vitamina C por la vena que superan las concentraciones plasmáticas, estas megadosis o dosis ortomoleculares son mucho más eficientes y elevadas que las tomadas de manera oral, y ayudan a potenciar todos los beneficios que trae la Vitamina C.",
+        "La aplicación se realiza de manera endovenosa pasando las dosis altas sin ninguna barrera de tipo físico que pueda alterar su biodisponibilidad y su absorción en todos los sistemas. Estas dosis se aplican supervisado por un médico especialista que aseguré que las dosis aplicadas sean las correctas de acuerdo al peso del paciente y a las necesidades fisiológicas según su patología. El proceso de la aplicación dura aproximadamente 60 minutos."
+      ],
+      "subsecciones": [
+        {
+          "titulo": "¿Cuál es la dosis máxima de Vitamina C por año?",
+          "contenido": [
+            "Las dosis que se aplica varían entre 0.5 a 1 mg por kilo y dependen de la condición física del paciente. Se pueden aplicar hasta 3 ciclos de 4 sesiones de megadosis en 6 meses o incluso más según las necesidades de la persona. Para alguien que no presenta ningún tipo de enfermedad, se pueden aplicar hasta 20 dosis de Vitamina C al año. Para alguien que tiene una enfermedad, algún tipo de cáncer, las dosis pueden aumentar considerablemente hasta 50 al año, ya que tienen un objetivo terapéutico de contrarrestar los efectos de la quimioterapia y prevenir las metástasis."
+          ]
+        },
+        {
+          "titulo": "Enfermedades que se tratan con las Megadosis de Vitamina C",
+          "contenido": [
+            "<h4>Enfermedades cardiovasculares e hipertensión:</h4> la suplementación con vitamina C reduce los depósitos arteriales de placa. La Vitamina C es un cofactor esencial para la formación de carnitina.",
+            "<h4>Problemas de piel y mala cicatrización:</h4> acelera el proceso de curación de heridas, lesiones y quemaduras; tiene un papel esencial en la formación de colágeno; mejora el estado de la piel y protege el tejido conectivo.",
+            "<h4>Alzheimer:</h4> se encontró que las concentraciones más bajas de vitamina C en el fluido cerebral y la matriz extracelular cerebral de un modelo de ratón de EA aumentan el estrés oxidativo y aceleran la deposición de amiloide y la progresión de la enfermedad.",
+            "<h4>Infecciones respiratorias</h4> causadas por virus y bacterias.",
+            "<h4>Pacientes con Cáncer:</h4> la vitamina C tiene efectos citotóxicos sobre las células con cáncer y protegen las células sanas de daños ocasionados por los medicamentos de la quimioterapia. El uso de estas megadosis ayuda a minimizar los efectos secundarios de la quimioterapia, disminuye el empeoramiento de los síntomas, reduce el daño causado por el cáncer, y mejora la supervivencia."
+          ]
+        }
+      ]
+    },
+
+
+
+
+
+    {
+      "id": "ozonoterapia",
+      "titulo": "Ozonoterapia <br> Beneficios y aplicaciones clínicas",
+      "imagen": "images/notas/ozonoterapia.png",
+      "texto": [
+        "La ozonoterapia es una técnica médica que utiliza una mezcla de oxígeno y ozono para estimular mecanismos antioxidantes naturales del cuerpo.",
+        "Su aplicación es local o sistémica, y busca mejorar la oxigenación celular, reducir inflamaciones y reforzar el sistema inmunológico."
+      ],
+      "subsecciones": [
+        {
+          "titulo": "Beneficios generales",
+          "contenido": [
+            "Acelera la regeneración celular.",
+            "Reduce el dolor articular y muscular.",
+            "Mejora la circulación sanguínea."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "vitamina-c",
+      "titulo": "Megadosis de Vitamina C <br> ¿Qué es? ¿Cuáles son sus beneficios?",
+      "imagen": "images/Home/Notas/nota1home.png",
+      "texto": [
+        "La <strong>Vitamina C</strong>, conocida como <em>ácido ascórbico</em>, es un nutriente hidrosoluble que actúa como antioxidante, protegiendo las células del daño causado por los radicales libres.",
+        "Las megadosis son aplicaciones de dosis elevadas de Vitamina C por la vena que superan las concentraciones plasmáticas, estas megadosis o dosis ortomoleculares son mucho más eficientes y elevadas que las tomadas de manera oral, y ayudan a potenciar todos los beneficios que trae la Vitamina C.",
+        "La aplicación se realiza de manera endovenosa pasando las dosis altas sin ninguna barrera de tipo físico que pueda alterar su biodisponibilidad y su absorción en todos los sistemas. Estas dosis se aplican supervisado por un médico especialista que aseguré que las dosis aplicadas sean las correctas de acuerdo al peso del paciente y a las necesidades fisiológicas según su patología. El proceso de la aplicación dura aproximadamente 60 minutos."
+      ],
+      "subsecciones": [
+        {
+          "titulo": "¿Cuál es la dosis máxima de Vitamina C por año?",
+          "contenido": [
+            "Las dosis que se aplica varían entre 0.5 a 1 mg por kilo y dependen de la condición física del paciente. Se pueden aplicar hasta 3 ciclos de 4 sesiones de megadosis en 6 meses o incluso más según las necesidades de la persona. Para alguien que no presenta ningún tipo de enfermedad, se pueden aplicar hasta 20 dosis de Vitamina C al año. Para alguien que tiene una enfermedad, algún tipo de cáncer, las dosis pueden aumentar considerablemente hasta 50 al año, ya que tienen un objetivo terapéutico de contrarrestar los efectos de la quimioterapia y prevenir las metástasis."
+          ]
+        },
+        {
+          "titulo": "Enfermedades que se tratan con las Megadosis de Vitamina C",
+          "contenido": [
+            "<h4>Enfermedades cardiovasculares e hipertensión:</h4> la suplementación con vitamina C reduce los depósitos arteriales de placa. La Vitamina C es un cofactor esencial para la formación de carnitina.",
+            "<h4>Problemas de piel y mala cicatrización:</h4> acelera el proceso de curación de heridas, lesiones y quemaduras; tiene un papel esencial en la formación de colágeno; mejora el estado de la piel y protege el tejido conectivo.",
+            "<h4>Alzheimer:</h4> se encontró que las concentraciones más bajas de vitamina C en el fluido cerebral y la matriz extracelular cerebral de un modelo de ratón de EA aumentan el estrés oxidativo y aceleran la deposición de amiloide y la progresión de la enfermedad.",
+            "<h4>Infecciones respiratorias</h4> causadas por virus y bacterias.",
+            "<h4>Pacientes con Cáncer:</h4> la vitamina C tiene efectos citotóxicos sobre las células con cáncer y protegen las células sanas de daños ocasionados por los medicamentos de la quimioterapia. El uso de estas megadosis ayuda a minimizar los efectos secundarios de la quimioterapia, disminuye el empeoramiento de los síntomas, reduce el daño causado por el cáncer, y mejora la supervivencia."
+          ]
+        }
+      ]
+    }
+
+  ]
+}

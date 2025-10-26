@@ -1,4 +1,10 @@
-
+#nav{
+    width: 430px; 
+    height: 151.62px; 
+    left: 0px; 
+    top: 0px; 
+    position: absolute; 
+}
 
 /*nav_bar.css*/
 .NavBar{
@@ -32,6 +38,7 @@
     left: 336.97px; 
     top: 67.15px; 
     position: absolute;
+    width: 50px;
 }
 
 .MicaelMarca1{
@@ -57,6 +64,8 @@
     transition: all 0.3s ease;
     opacity: 0;
     pointer-events: none;
+    z-index: 10000;
+
 }
 
 .Rectangle10{
@@ -92,8 +101,33 @@
 
 /* Menú visible */
 .Menu2.show {
-    opacity: 1;
-    pointer-events: auto;
+    width: 430px; 
+    height: 235px; 
+    left: 0px; 
+    top: 151.62px;
+    position: absolute; 
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); 
+    overflow: hidden;
+    background: rgba(52, 52, 52, 0.9);
+    backdrop-filter: blur(4px);
+    transition: all 0.3s ease;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 10000;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    
+}
+/* Hacer que el botón sea clickeable */
+#menuButton {
+  position: relative;
+  z-index: 10001;
+  cursor: pointer;
+}
+
+/* Por si algo tiene pointer-events y tapa el botón */
+.RectangleNavBar, .MarcaMicael {
+  pointer-events: none;
 }
 
 /* Convertimos los textos en botones */
@@ -112,3 +146,5 @@
 .menu_button:hover {
     color: #D5A6E6;
 }
+
+

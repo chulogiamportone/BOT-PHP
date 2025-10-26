@@ -1,30 +1,25 @@
-document.addEventListener('DOMContentLoaded', () => {
-  const form = document.getElementById('contactForm');
-  if (!form) return;
 
-  form.addEventListener('submit', async function(e) {
-    e.preventDefault();
-    const payload = {
-      email: document.getElementById('email').value.trim(),
-      nombre: document.getElementById('nombre').value.trim(),
-      telefono: document.getElementById('telefono').value.trim(),
-      comentario: document.getElementById('comentario').value.trim(),
-      enviarCopia: document.getElementById('enviarCopia')?.checked || false
-    };
+document.getElementById('contactForm').addEventListener('submit', function (e) {
+  e.preventDefault();
 
-    try {
-      const resp = await fetch('contacto.php', {
-        method: 'POST',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify(payload)
-      });
-      const result = await resp.json();
-      if (!resp.ok || !result.success) throw new Error(result.message || `Error ${resp.status}`);
-      alert('Formulario enviado correctamente');
-      this.reset();
-    } catch (err) {
+  const formData = new FormData(this);
+
+  fetch('send_mail.php', {
+    method: 'POST',
+    body: formData
+  })
+    .then(res => res.json())
+    .then(data => {
+      if (data.success) {
+        alert('¡Mensaje enviado correctamente!');
+        this.reset();
+      } else {
+        alert('Hubo un error, inténtalo de nuevo.');
+      }
+    })
+    .catch(err => {
       console.error(err);
-      alert('Error al enviar el formulario.');
-    }
-  });
+      alert('Hubo un error, inténtalo de nuevo.');
+    });
 });
+

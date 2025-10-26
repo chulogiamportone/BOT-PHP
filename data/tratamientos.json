@@ -3,14 +3,42 @@
     "id": 1,
     "title": "Megadosis Vitamina C",
     "description": "Refuerzo radical del sistema inmune. Altas dosis de Vitamina C que combate la inflamación crónica y promover los procesos de regeneración celular.",
-    "image": "data:image/png",
-    "position": { "left": 30, "top": 1092 }
+    "image": "images/Home/Tratamientos/constalacionesfamiliares.png",
+    "position": { "left": 30, "top": 0 }
   },
   {
     "id": 2,
     "title": "Otro Tratamiento",
     "description": "Descripción del tratamiento...",
-    "image": "data:image/png",
-    "position": { "left": 30, "top": 1280 }
+    "image": "images/Home/Tratamientos/limpiezadeorganos.png",
+    "position": { "left": 30, "top": 170 }
+  },
+  {
+    "id": 3,
+    "title": "Otro Tratamiento",
+    "description": "Descripción del tratamiento...",
+    "image": "images/Home/Tratamientos/Medicacionantroposofica.png",
+    "position": { "left": 30, "top": 340}
+  },
+  {
+    "id": 4,
+    "title": "Otro Tratamiento",
+    "description": "Descripción del tratamiento...",
+    "image": "images/Home/Tratamientos/MegadosisVitaminaC.png",
+    "position": { "left": 30, "top": 510 }
+  },
+  {
+    "id": 5,
+    "title": "Otro Tratamiento",
+    "description": "Descripción del tratamiento...",
+    "image": "images/Home/Tratamientos/Nutricionbiologica.png",
+    "position": { "left": 30, "top": 680 }
+  },
+  {
+    "id": 6,
+    "title": "Otro Tratamiento",
+    "description": "Descripción del tratamiento...",
+    "image": "images/Home/Tratamientos/terapiaquelacion.png",
+    "position": { "left": 30, "top": 850 }
   }
 ]
