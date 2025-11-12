@@ -27,12 +27,7 @@ if (!$email || $nombre === '' || $telefono === '' || $comentario === '') {
   exit;
 }
 
-// CONFIGURÁ ESTO con tus credenciales del panel de MySQL
-$host = 'localhost';
-$db   = 'TU_BASE';
-$user = 'TU_USUARIO';
-$pass = 'TU_PASSWORD';
-$dsn = "mysql:host=$host;dbname=$db;charset=utf8mb4";
+
 
 try {
   $pdo = new PDO($dsn, $user, $pass, [
@@ -60,3 +55,6 @@ try {
   http_response_code(500);
   echo json_encode(['success' => false, 'message' => 'Error en el servidor']);
 }
+
+
+?>

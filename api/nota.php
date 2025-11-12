@@ -28,3 +28,5 @@ if (empty($nota)) {
 
 echo json_encode($nota[0], JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
 ?>
+
+
