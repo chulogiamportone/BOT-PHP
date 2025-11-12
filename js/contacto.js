@@ -4,7 +4,7 @@ document.getElementById('contactForm').addEventListener('submit', function (e) {
 
   const formData = new FormData(this);
 
-  fetch('send_mail.php', {
+  fetch('/api/send_mail.php', {
     method: 'POST',
     body: formData
   })

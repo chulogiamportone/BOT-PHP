@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     const params = new URLSearchParams(window.location.search);
     const id = params.get("id") || "vitamina-c"; // por defecto
 
-    const response = await fetch(`../nota.php?id=${id}`);
+    const response = await fetch(`../api/nota.php?id=${id}`);
     const nota = await response.json();
 
     if (nota.error) {
