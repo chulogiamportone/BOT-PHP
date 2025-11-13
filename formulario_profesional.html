@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cargar Profesional</title>
+  <link rel="stylesheet" href="/css/formulario_notas.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Cargar Profesional</h1>
+
+    <form id="profForm" enctype="multipart/form-data">
+      <div class="form-group">
+        <label for="id">ID *</label>
+        <input type="text" id="id" name="id" required />
+      </div>
+
+      <div class="form-group">
+        <label for="nombre">Nombre *</label>
+        <input type="text" id="nombre" name="nombre" required />
+      </div>
+
+      <div class="form-group">
+        <label for="titulo">Título/Especialidad *</label>
+        <input type="text" id="titulo" name="titulo" required />
+      </div>
+
+      <div class="form-group">
+        <label for="imagen">Imagen</label>
+        <input type="file" id="imagen" name="imagen" accept="image/*" />
+        <small>O ingresa una URL:</small>
+        <input type="url" id="imagenUrl" name="imagenUrl" placeholder="https://..." />
+      </div>
+
+      <div class="form-group">
+        <label for="descripcion_corta">Descripción corta *</label>
+        <textarea id="descripcion_corta" name="descripcion_corta" rows="3" placeholder="Resumen breve" required></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="descripcion_larga">Descripción larga *</label>
+        <textarea id="descripcion_larga" name="descripcion_larga" rows="8" placeholder="Biografía / detalle" required></textarea>
+      </div>
+
+      <div class="form-actions">
+        <button type="submit" class="btn btn-primary">Guardar</button>
+        <button type="reset" class="btn">Limpiar</button>
+      </div>
+    </form>
+
+    <div id="msg" class="msg" style="display:none;"></div>
+  </div>
+
+  <script src="/js/formulario_profesional.js"></script>
+</body>
+</html>

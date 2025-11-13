@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cargar Tratamiento</title>
+  <link rel="stylesheet" href="/css/formulario_notas.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Cargar Tratamiento</h1>
+
+    <form id="tratamientoForm" enctype="multipart/form-data">
+      <div class="form-group">
+        <label for="id">ID *</label>
+        <input type="text" id="id" name="id" required />
+      </div>
+
+      <div class="form-group">
+        <label for="titulo">Título *</label>
+        <input type="text" id="titulo" name="titulo" required />
+      </div>
+
+      <div class="form-group">
+        <label for="imagen">Imagen</label>
+        <input type="file" id="imagen" name="imagen" accept="image/*" />
+        <small>O ingresa una URL:</small>
+        <input type="url" id="imagenUrl" name="imagenUrl" placeholder="https://..." />
+      </div>
+
+      <div class="form-group">
+        <label>Texto (párrafos)</label>
+        <div id="textoContainer">
+          <textarea name="texto[]" class="texto-item" placeholder="Párrafo 1"></textarea>
+        </div>
+        <button type="button" class="btn" id="btnAddTexto">+ Agregar párrafo</button>
+      </div>
+
+      <div class="form-group">
+        <label>Subsecciones</label>
+        <div id="subseccionesContainer"></div>
+        <button type="button" class="btn" id="btnAddSub">+ Agregar subsección</button>
+      </div>
+
+      <div class="form-actions">
+        <button type="submit" class="btn btn-primary">Guardar</button>
+        <button type="reset" class="btn">Limpiar</button>
+      </div>
+    </form>
+
+    <div id="msg" class="msg" style="display:none;"></div>
+  </div>
+
+  <script src="/js/formulario_tratamiento.js"></script>
+</body>
+</html>

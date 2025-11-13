@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Micael Medicina Integrativa - Tratamientos</title>
+
+    <!-- Tipografía montserrat -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+
+    <!-- AOS CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" />
+
+    <!-- AOS JS -->
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="puntogis-12.ico">
+
+    <!-- Hojas de estilo -->
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/nav_bar.css">
+    <link rel="stylesheet" href="css/slider.css">
+    <link rel="stylesheet" href="css/nota.css">
+</head>
+
+<body>
+    <div class="main-wrapper">
+        <header>
+            <div data-include="nav_bar.html"></div>
+        </header>
+
+        <section class="notas-body" style="margin-top: 200px">
+            <!-- Aquí se renderiza dinámicamente la lista o el detalle -->
+        </section>
+
+        <div class="boton-solicitar">
+            <button>Solicitar consulta</button>
+        </div>
+
+        <div class="botones-navegacion">
+            <button class="btn-anterior">
+                <svg width="11" height="18" viewBox="0 0 11 18" fill="none">
+                    <path
+                        d="M10.226 1.05296C10.0932 0.919055 9.93518 0.812773 9.76109 0.740243C9.587 0.667713 9.40027 0.630371 9.21167 0.630371C9.02307 0.630371 8.83634 0.667713 8.66225 0.740243C8.48816 0.812773 8.33015 0.919055 8.19734 1.05296L1.05418 8.19612C0.920275 8.32893 0.813993 8.48694 0.741464 8.66103C0.668934 8.83512 0.631592 9.02185 0.631592 9.21045C0.631592 9.39905 0.668934 9.58578 0.741464 9.75987C0.813993 9.93396 0.920275 10.092 1.05418 10.2248L8.19734 17.3679C8.33015 17.5018 8.48816 17.6081 8.66225 17.6807C8.83634 17.7532 9.02307 17.7905 9.21167 17.7905C9.40027 17.7905 9.587 17.7532 9.76109 17.6807C9.93518 17.6081 10.0932 17.5018 10.226 17.3679Z"
+                        fill="#824C91" />
+                </svg>
+                Anterior
+            </button>
+
+            <button class="btn-siguiente">
+                Siguiente
+                <svg width="11" height="18" viewBox="0 0 11 18" fill="none">
+                    <path
+                        d="M1.40559 1.05296C1.5384 0.919055 1.69641 0.812773 1.8705 0.740243C2.04459 0.667713 2.23133 0.630371 2.41992 0.630371C2.60852 0.630371 2.79525 0.667713 2.96934 0.740243C3.14343 0.812773 3.30144 0.919055 3.43425 1.05296L10.5774 8.19612C10.7113 8.32893 10.8176 8.48694 10.8901 8.66103C10.9627 8.83512 11 9.02185 11 9.21045C11 9.39905 10.9627 9.58578 10.8901 9.75987C10.8176 9.93396 10.7113 10.092 10.5774 10.2248L3.43425 17.3679Z"
+                        fill="#824C91" />
+                </svg>
+            </button>
+        </div>
+
+        <footer>
+            <div data-include="footer.html"></div>
+        </footer>
+    </div>
+
+    <script src="js/include_html.js"></script>
+    <script src="js/index.js"></script>
+    <script src="js/contacto.js"></script>
+    <script src="js/burguer.js"></script>
+    <script src="js/tratamiento.js"></script>
+</body>
+
+</html>
