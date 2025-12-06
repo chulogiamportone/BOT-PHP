@@ -1,0 +1,194 @@
+.vector-divider {
+    align-self: stretch;
+}
+
+/* Contenedor principal de la card */
+.card-container {
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 12px;
+}
+
+/* Card profesional */
+.professional-card {
+    align-self: stretch;
+    display: inline-flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 6px;
+}
+
+/* Imagen de perfil */
+.profile-image {
+    width: 113px;
+    height: 113px;
+    border-radius: 9999px;
+    object-fit: cover;
+}
+
+/* Contenedor de la info de la card */
+.card-info {
+    width: 246.42px;
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 3px;
+}
+
+/* Nombre del profesional */
+.professional-name {
+    width: 235px;
+    height: 20.23px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: #000000;
+    font-size: 16px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    line-height: 23px;
+    word-wrap: break-word;
+}
+
+/* Especialidades */
+.professional-specialties {
+    width: 235px;
+    height: 71px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: #000000;
+    font-size: 14px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    line-height: 18px;
+    word-wrap: break-word;
+}
+
+/* Contenedor del botón */
+.button-container {
+    align-self: stretch;
+    padding: 5.71px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5.71px;
+}
+
+/* Botón */
+.details-button {
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: #824C91;
+    font-size: 12px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    word-wrap: break-word;
+}
+
+
+
+
+
+/*Detalle de profesionales */
+
+/* Contenedor general de la vista de detalle */
+
+
+/* Card principal */
+.prof-detalle__card {
+  background-color: #ffffff;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.08);
+  padding: 2.5rem 2rem 2.5rem;
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Avatar */
+.prof-detalle__avatar-wrapper {
+  width: 240px;
+  height: 240px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+  flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.prof-detalle__avatar {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Información textual */
+.prof-detalle__info {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.prof-detalle__nombre {
+  text-align: center;
+  font-size: 20px;
+  font-weight: 700;
+  margin: 0 0 0.5rem;
+  color: #222222;
+  margin-bottom: 0px !important;
+}
+
+.prof-detalle__titulo {
+  font-size: 20px;
+  text-align: center;
+  font-weight: 500;
+  margin: 0 0 1.5rem;
+  color: #666666;
+  margin-top: 0px !important;
+}
+
+/* Descripción larga */
+.prof-detalle__descripcion {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #444444;
+  text-align: left;
+  width: 370px;
+  justify-self: center;
+}
+
+
+
+/* Responsive pequeño ajuste */
+@media (max-width: 480px) {
+  .prof-detalle {
+    padding: 2rem 1rem;
+  }
+
+  .prof-detalle__card {
+    padding: 2rem 1.5rem 2rem;
+    max-width: 100%;
+  }
+
+  .prof-detalle__avatar-wrapper {
+    width: 200px;
+    height: 200px;
+  }
+
+  .prof-detalle__nombre {
+    font-size: 1.4rem;
+  }
+}

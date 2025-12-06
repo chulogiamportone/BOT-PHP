@@ -41,20 +41,20 @@ document.addEventListener("DOMContentLoaded", async () => {
       // Renderizar subsecciones
       const subsHtml = Array.isArray(subsArr)
         ? subsArr.map(sub => {
-            const tituloSub = sub.titulo ? `<h3>${escapeHtml(sub.titulo)}</h3>` : "";
-            let contenidoHtml = "";
-            if (Array.isArray(sub.contenido)) {
-              contenidoHtml = sub.contenido.map(p => `<p>${escapeHtml(p)}</p>`).join("");
-            } else if (typeof sub.contenido === "string") {
-              contenidoHtml = `<p>${escapeHtml(sub.contenido)}</p>`;
-            }
-            return `
+          const tituloSub = sub.titulo ? `<h3>${escapeHtml(sub.titulo)}</h3>` : "";
+          let contenidoHtml = "";
+          if (Array.isArray(sub.contenido)) {
+            contenidoHtml = sub.contenido.map(p => `<p>${escapeHtml(p)}</p>`).join("");
+          } else if (typeof sub.contenido === "string") {
+            contenidoHtml = `<p>${escapeHtml(sub.contenido)}</p>`;
+          }
+          return `
               <div class="texto texto-2">
                 ${tituloSub}
                 ${contenidoHtml}
               </div>
             `;
-          }).join("")
+        }).join("")
         : "";
 
       section.innerHTML = `
@@ -106,18 +106,24 @@ async function listarTodasLasNotas(section, API) {
     }
 
     section.innerHTML = `
-      <div class="lista-notas">
-        ${notas.map(n => `
-          <article class="nota-item">
-            ${n.imagen ? `<div class="nota-thumb"><img src="${escapeAttr(n.imagen)}" alt="${escapeAttr(n.titulo)}"></div>` : ""}
-            <div class="nota-info">
-              <h3>${escapeHtml(n.titulo)}</h3>
-              <a class="btn-ver" href="?id=${encodeURIComponent(n.id)}">Ver nota</a>
-            </div>
-          </article>
-        `).join("")}
-      </div>
-    `;
+        <div class="lista-notas">
+          ${notas.map(n => `
+            
+            <a class="card-nota" href="?id=${encodeURIComponent(n.id)}" style="display: block; text-decoration: none;">
+              
+              <div class="card-nota__media">
+                ${n.imagen ? `<img src="${escapeAttr(n.imagen)}" alt="${escapeAttr(n.titulo)}">` : ""}
+              </div>
+
+              <div class="card-nota__overlay">
+                <h3 class="card-nota__titulo">${escapeHtml(n.titulo)}</h3>
+              </div>
+
+            </a>
+
+          `).join("")}
+        </div>
+      `;
   } catch (e) {
     console.error(e);
     section.innerHTML = `<p>Error de conexión</p>`;

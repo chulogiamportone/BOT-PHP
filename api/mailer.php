@@ -1,40 +1,46 @@
 <?php
-header('Content-Type: application/json; charset=UTF-8');
+// Ajusta la ruta según dónde esté tu carpeta phpmailer
+require_once __DIR__ . '/phpmailer/PHPMailer.php';
+require_once __DIR__ . '/phpmailer/SMTP.php';
+require_once __DIR__ . '/phpmailer/Exception.php';
+
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
-require __DIR__ . '/phpmailer/PHPMailer.php';
-require __DIR__ . '/phpmailer/SMTP.php';
-require __DIR__ . '/phpmailer/Exception.php';
 
-$mail = new PHPMailer(true);
+function enviarCorreo($destinatario, $asunto, $mensaje, $reply_to = null) {
+    $mail = new PHPMailer(true);
 
-try {
-  $mail->isSMTP();
-  $mail->Host = 'mail.tudominio.com';     // tu host SMTP
-  $mail->SMTPAuth = true;
-  $mail->Username = 'contacto@tudominio.com';
-  $mail->Password = 'TU_PASSWORD';
-  $mail->SMTPSecure = 'tls';
-  $mail->Port = 587;
+    try {
+        // CONFIGURACIÓN SMTP
+        $mail->isSMTP();
+        $mail->Host       = 'smtp.gmail.com';      // Cambia si usas otro proveedor
+        $mail->SMTPAuth   = true;
+        $mail->Username   = 'tu_email@gmail.com';  // TU email
+        $mail->Password   = 'tu_contraseña_app';   // Contraseña de aplicación
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+        $mail->Port       = 587;
+        $mail->CharSet    = 'UTF-8';
 
-  $mail->setFrom('contacto@tudominio.com', 'Formulario Web');
-  $mail->addAddress('tuemail@ejemplo.com', 'Admin'); // destino principal
+        // REMITENTE
+        $mail->setFrom('tu_email@gmail.com', 'Micael Medicina Integrativa');
 
-  if ($enviarCopia) $mail->addAddress($email); // copia al usuario
+        // DESTINATARIO
+        $mail->addAddress($destinatario);
 
-  $mail->isHTML(true);
-  $mail->Subject = 'Nuevo mensaje desde la web';
-  $mail->Body = "
-    <h2>Nuevo mensaje</h2>
-    <p><strong>Nombre:</strong> {$nombre}</p>
-    <p><strong>Email:</strong> {$email}</p>
-    <p><strong>Teléfono:</strong> {$telefono}</p>
-    <p><strong>Comentario:</strong><br>{$comentario}</p>
-  ";
+        // REPLY-TO (para poder responder al que envió el form)
+        if ($reply_to) {
+            $mail->addReplyTo($reply_to);
+        }
 
-  $mail->send();
-  echo json_encode(['success' => true, 'message' => 'Mensaje enviado y guardado']);
-} catch (Exception $e) {
-  echo json_encode(['success' => true, 'message' => 'Guardado en DB, pero error al enviar email']);
-}
-?>
+        // CONTENIDO (TEXTO PLANO)
+        $mail->isHTML(false);
+        $mail->Subject = $asunto;
+        $mail->Body    = $mensaje;
+
+        $mail->send();
+        return true;
+    } catch (Exception $e) {
+        error_log('Error al enviar correo: ' . $mail->ErrorInfo);
+        return false;
+    }
+} 
