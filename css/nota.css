@@ -308,6 +308,19 @@ p {
 
   /* Opcional: Un pequeño margen a la derecha para separar del texto que sigue */
   margin-right: 5px;
+  /* Esto reemplaza a tu <br> visualmente */
+  margin-top: 2rem;
+
+}
+
+/* Esta regla mágica elimina el margen si es el primer elemento */
+.texto-2 h4.subtitulo-violeta:first-child {
+  margin-top: 0;
+}
+
+/* O si el título está justo después de abrir el contenedor */
+.texto-2>.subtitulo-violeta:first-of-type {
+  margin-top: 0;
 }
 
 .nota-cuerpo h3,

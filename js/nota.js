@@ -36,24 +36,24 @@ document.addEventListener("DOMContentLoaded", async () => {
       // --- CORRECCIÓN 1: Renderizar subsecciones usando el formateador ---
       const subsHtml = Array.isArray(subsArr)
         ? subsArr.map(sub => {
-            const tituloSub = sub.titulo ? `<h3>${escapeHtml(sub.titulo)}</h3>` : "";
-            let contenidoHtml = "";
-            
-            // Aquí estaba el error: antes usabas escapeHtml directo.
-            // Ahora usamos formatearTextoPersonalizado
-            if (Array.isArray(sub.contenido)) {
-              contenidoHtml = sub.contenido.map(p => `<p>${formatearTextoPersonalizado(p)}</p>`).join("");
-            } else if (typeof sub.contenido === "string") {
-              contenidoHtml = `<p>${formatearTextoPersonalizado(sub.contenido)}</p>`;
-            }
-            
-            return `
+          const tituloSub = sub.titulo ? `<h3>${escapeHtml(sub.titulo)}</h3>` : "";
+          let contenidoHtml = "";
+
+          // Aquí estaba el error: antes usabas escapeHtml directo.
+          // Ahora usamos formatearTextoPersonalizado
+          if (Array.isArray(sub.contenido)) {
+            contenidoHtml = sub.contenido.map(p => `<p>${formatearTextoPersonalizado(p)}</p>`).join("");
+          } else if (typeof sub.contenido === "string") {
+            contenidoHtml = `<p>${formatearTextoPersonalizado(sub.contenido)}</p>`;
+          }
+
+          return `
               <div class="texto texto-2">
                 ${tituloSub}
                 ${contenidoHtml}
               </div>
             `;
-          }).join("")
+        }).join("")
         : "";
 
       // 1. Parseamos el JSON que viene de la base de datos (Cuerpo Principal)
@@ -110,7 +110,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
             </article>
         `;
-      
+
       inicializarNavegacion(API, id);
     } else {
       listarTodasLasNotas(section, API);
@@ -174,7 +174,7 @@ async function inicializarNavegacion(API, idActual) {
   const btnAnterior = document.querySelector(".btn-anterior");
   const btnSiguiente = document.querySelector(".btn-siguiente");
   // Verificamos si los botones existen en el HTML antes de usarlos
-  if (!btnAnterior && !btnSiguiente) return; 
+  if (!btnAnterior && !btnSiguiente) return;
 
   try {
     const res = await fetch(API);
@@ -190,21 +190,21 @@ async function inicializarNavegacion(API, idActual) {
     const siguiente = idx < lista.length - 1 ? lista[idx + 1] : null;
 
     if (btnAnterior) {
-        if (anterior) {
-            btnAnterior.disabled = false;
-            btnAnterior.onclick = () => window.location.search = `?id=${encodeURIComponent(anterior.id)}`;
-        } else {
-            btnAnterior.disabled = true;
-        }
+      if (anterior) {
+        btnAnterior.disabled = false;
+        btnAnterior.onclick = () => window.location.search = `?id=${encodeURIComponent(anterior.id)}`;
+      } else {
+        btnAnterior.disabled = true;
+      }
     }
 
     if (btnSiguiente) {
-        if (siguiente) {
-            btnSiguiente.disabled = false;
-            btnSiguiente.onclick = () => window.location.search = `?id=${encodeURIComponent(siguiente.id)}`;
-        } else {
-            btnSiguiente.disabled = true;
-        }
+      if (siguiente) {
+        btnSiguiente.disabled = false;
+        btnSiguiente.onclick = () => window.location.search = `?id=${encodeURIComponent(siguiente.id)}`;
+      } else {
+        btnSiguiente.disabled = true;
+      }
     }
   } catch (e) {
     console.error(e);
@@ -219,14 +219,14 @@ function formatearTextoPersonalizado(textoRaw) {
   let texto = escapeHtml(textoRaw);
 
   // 2. DEFINICIÓN DE TOKENS
-  const T_BOLD   = "###TOKEN_BOLD###";
+  const T_BOLD = "###TOKEN_BOLD###";
   const T_VIOLET = "###TOKEN_VIOLET###";
-  const T_TAB    = "###TOKEN_TAB###";
+  const T_TAB = "###TOKEN_TAB###";
 
   // 3. REEMPLAZO
-  texto = texto.replace(/\\r\\n|\r\n/g, T_BOLD);   
-  texto = texto.replace(/\\n|\n/g, T_VIOLET);      
-  texto = texto.replace(/\\t|\t/g, T_TAB);         
+  texto = texto.replace(/\\r\\n|\r\n/g, T_BOLD);
+  texto = texto.replace(/\\n|\n/g, T_VIOLET);
+  texto = texto.replace(/\\t|\t/g, T_TAB);
 
   // 4. PROCESAR ESTRUCTURA
   const partesVioleta = texto.split(T_VIOLET);
@@ -239,17 +239,15 @@ function formatearTextoPersonalizado(textoRaw) {
     // ------------------------
 
     // C. Aplicar Estilo Violeta (Si es impar)
+    // C. Aplicar Estilo Violeta (Si es impar - TÍTULOS)
     if (index % 2 === 1) {
-        if (!textoEstilizado.trim()) return ""; 
-        
-        const htmlTitulo = `<br><h4 class="subtitulo-violeta">${textoEstilizado}</h4>`;
+      if (!textoEstilizado.trim()) return "";
 
-        
-           
-        
-        
-        // Para el resto, lo devolvemos normal
-        return htmlTitulo;
+      // ACÁ ESTÁ EL TRUCO:
+      // 1. </p> cierra el párrafo que abrió la función padre.
+      // 2. Ponés el H4.
+      // 3. <p> abrís el párrafo para el texto que sigue.
+      return `</p><p><h4 class="subtitulo-violeta">${textoEstilizado}</h4>`;
     }
 
     return textoEstilizado;
@@ -259,13 +257,13 @@ function formatearTextoPersonalizado(textoRaw) {
 
 // Función auxiliar para cortar y envolver (reutilizable para Bold e Italic)
 function procesarEstilo(texto, token, etiqueta) {
-    if (!texto.includes(token)) return texto;
+  if (!texto.includes(token)) return texto;
 
-    return texto.split(token).map((fragmento, i) => {
-        // Si el índice es impar, aplicamos la etiqueta
-        if (i % 2 === 1) {
-            return `<${etiqueta}>${fragmento}</${etiqueta}>`;
-        }
-        return fragmento;
-    }).join('');
+  return texto.split(token).map((fragmento, i) => {
+    // Si el índice es impar, aplicamos la etiqueta
+    if (i % 2 === 1) {
+      return `<${etiqueta}>${fragmento}</${etiqueta}>`;
+    }
+    return fragmento;
+  }).join('');
 }
