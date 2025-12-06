@@ -6,7 +6,9 @@
   color: black;
 }
 
-h2, h3, h4 {
+h2,
+h3,
+h4 {
   font-family: "Montserrat", sans-serif;
   font-weight: 700;
   margin-bottom: 10px;
@@ -116,66 +118,226 @@ p {
 /*NOTAS CARDS */
 /* Contenedor principal de la tarjeta */
 .card-nota {
-    width: 371px;
-    height: 276px;
-    justify-self: center;
-    margin: 20px auto;
-    position: relative; /* Para poder posicionar el texto encima */
-    overflow: hidden;   /* Para recortar la imagen si sobra */
-    border-radius: 0;   /* Ajusta si necesitas bordes redondeados */
-    background-color: #f0f0f0; /* Fondo por si falla la imagen */
+  width: 371px;
+  height: 276px;
+  justify-self: center;
+  margin: 20px auto;
+  position: relative;
+  /* Para poder posicionar el texto encima */
+  overflow: hidden;
+  /* Para recortar la imagen si sobra */
+  border-radius: 0;
+  /* Ajusta si necesitas bordes redondeados */
+  background-color: #f0f0f0;
+  /* Fondo por si falla la imagen */
 }
 
 /* Contenedor de la imagen (ocupa todo el espacio) */
 .card-nota__media {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 1;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
 }
 
 /* La imagen en sí */
 .card-nota__media img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* Mantiene la proporción sin estirar */
-    display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* Mantiene la proporción sin estirar */
+  display: block;
 }
 
 /* El fondo negro transparente en la parte inferior */
 .card-nota__overlay {
-    width: 100%;
-    height: 64px;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    z-index: 2;
-    background-color: rgba(0, 0, 0, 0.39); /* El color negro con opacidad 0.39 */
-    
-    /* Centrado del texto vertical y horizontalmente */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0 20px; /* Margen lateral para que el texto no toque los bordes */
-    box-sizing: border-box;
+  width: 100%;
+  height: 64px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 2;
+  background-color: rgba(0, 0, 0, 0.39);
+  /* El color negro con opacidad 0.39 */
+
+  /* Centrado del texto vertical y horizontalmente */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 20px;
+  /* Margen lateral para que el texto no toque los bordes */
+  box-sizing: border-box;
 }
 
 /* El título de la nota */
 .card-nota__titulo {
-    color: white;
-    font-family: 'Montserrat', sans-serif;
-    font-size: 16px;
-    font-weight: 700;
-    text-align: center;
-    margin: 0;
-    word-wrap: break-word;
-    
-    /* Aseguramos que si es muy largo, se corte con puntos suspensivos 
+  color: white;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  text-align: center;
+  margin: 0;
+  word-wrap: break-word;
+
+  /* Aseguramos que si es muy largo, se corte con puntos suspensivos 
        o ajusta 'max-height' si prefieres que se vea más líneas */
-    display: -webkit-box;
-    -webkit-line-clamp: 2; /* Máximo 2 líneas */
-    -webkit-box-orient: vertical;
-    overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  /* Máximo 2 líneas */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+
+/*Detalle nota */
+
+/* Contenedor principal de la nota */
+.nota-detalle {
+  width: 100%;
+  max-width: 400px;
+  /* Ancho máximo similar al diseño original (372px) */
+  margin: 0 auto;
+  /* Centrado en pantalla */
+  padding: 20px;
+  font-family: 'Montserrat', sans-serif;
+  color: black;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  /* Espacio vertical entre elementos */
+}
+
+/* Título */
+.nota-titulo {
+  font-size: 18px;
+  font-weight: 700;
+  text-align: center;
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* Entrada (Texto destacado debajo del título) */
+.nota-entrada {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+/* Estilo específico para "ácido ascórbico" si viene con etiquetas b o i desde el backend,
+   o puedes usar clases utilitarias */
+.nota-entrada strong {
+  font-weight: 600;
+}
+
+.nota-entrada em {
+  font-style: italic;
+  font-weight: 500;
+}
+
+/* Imagen */
+.nota-imagen-container {
+  width: 100%;
+  margin: 0;
+  border-radius: 8px;
+  /* Opcional: bordes redondeados */
+  overflow: hidden;
+  background-color: #D9D9D9;
+  /* Color de fondo mientras carga */
+}
+
+.nota-imagen {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+/* Títulos dentro del cuerpo (Preguntas o Subtítulos reales) */
+.nota-cuerpo h3 {
+  font-weight: 700;
+  display: block;
+  /* El título SÍ ocupa su propia línea */
+  margin-top: 15px;
+  margin-bottom: 5px;
+  color: black;
+}
+
+/* Negritas dentro del párrafo (SOLUCIÓN DEL PROBLEMA) */
+.nota-cuerpo strong {
+  font-weight: 700;
+  display: inline;
+  /* CRÍTICO: Esto hace que fluya con el texto */
+  margin: 0;
+  /* Quitamos márgenes extra */
+  color: inherit;
+  /* Hereda el color del párrafo */
+}
+
+/* Cuerpo del texto */
+.nota-cuerpo {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.6;
+  word-wrap: break-word;
+}
+
+/* Títulos dentro del cuerpo (Preguntas o Subtítulos) */
+.nota-cuerpo h3,
+.nota-cuerpo strong {
+  font-weight: 700;
+
+  color: black;
+}
+
+
+
+
+/* Eliminamos el display: block y los márgenes verticales grandes */
+.subtitulo-violeta {
+  color: #824C91;
+  font-weight: 600;
+  /* Un poco más grueso para destacar */
+  font-size: 1.1em;
+  /* Opcional: un poquito más grande que el texto normal */
+
+  /* Importante: display inline para que el texto siga al lado */
+  display: inline;
+
+  /* Opcional: Un pequeño margen a la derecha para separar del texto que sigue */
+  margin-right: 5px;
+}
+
+.nota-cuerpo h3,
+.nota-cuerpo strong {
+  font-weight: 700;
+
+  color: black;
+}
+
+
+/* Botón */
+.nota-footer {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.btn-solicitar {
+  background-color: #824C91;
+  /* Asumiendo el color violeta de la marca */
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 25px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.btn-solicitar:hover {
+  background-color: #6a3a75;
 }
