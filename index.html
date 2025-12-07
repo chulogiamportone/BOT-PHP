@@ -38,8 +38,8 @@
             <div class="Slider">
                 <div class="slider-container">
                     <img class="slider-image active" src="images/Home/Slider/OZONOTERAPIA 1.png" alt="Slide 1">
-                    <img class="slider-image" src="images/Home/Tratamientos/constalacionesfamiliares.png" alt="Slide 2">
-                    <img class="slider-image" src="images/Home/Tratamientos/limpiezadeorganos.png" alt="Slide 3">
+                    <img class="slider-image" src="images/Home/Slider/OZONO-istock-2.jpg" alt="Slide 2">
+                    <img class="slider-image" src="images/Home/Slider/Constelaciones familiares2.jpg" alt="Slide 3">
                 </div>
 
                 <div data-layer="Frame 1" class="Frame1">
@@ -109,24 +109,7 @@
                     <span class="bold">Emilio Jofré 473, </span>
                     <span>Quinta Sección, Mendoza, Argentina</span>
                 </div>
-                <style>
-                    .map-responsive {
-                        position: relative;
-                        padding-bottom: 56.25%;
-                        /* proporción 16:9 — podés ajustar (ej: 50 %, 75 %, etc.) */
-                        height: 0;
-                        overflow: hidden;
-                    }
 
-                    .map-responsive iframe {
-                        position: absolute;
-                        top: 0;
-                        left: 0;
-                        width: 100%;
-                        height: 100%;
-                        border: 0;
-                    }
-                </style>
 
                 <div class="map-responsive">
                     <iframe loading="lazy" referrerpolicy="no-referrer-when-downgrade"
@@ -184,7 +167,9 @@
                             <label for="enviarCopia">Enviarme una copia</label>
                         </div>
 
-                        <button type="submit" class="submit-btn">Enviar</button>
+                        <div style="display: flex; justify-content: center;">
+                            <button type="submit" class="submit-btn">Enviar</button>
+                        </div>
                     </form>
                 </div>
             </div>
@@ -217,6 +202,7 @@
     <script src="js/index.js"></script>
     <script src="js/contacto.js"></script>
     <script src="js/burguer.js"></script>
+    <script src="js/slider.js"></script>
 
     <script>
         window.initCards({ jsonUrl: '/data/tratamientos.json', containerId: 'cards-container' });

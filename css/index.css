@@ -201,6 +201,7 @@ section {
 }
 
 .checkbox-wrapper {
+  visibility: collapse;
   display: flex;
   align-items: center;
   height: 26px;
@@ -426,10 +427,29 @@ body {
 
 #cards-container {
   width: 430px;
-  height: 1150px;
+  height: 1450px;
   position: relative;
   background: white;
   overflow: hidden;
+  top: 350px;
+}
+
+.map-responsive {
+  position: relative;
+  padding-bottom: 56.25%;
+  /* proporción 16:9 — podés ajustar (ej: 50 %, 75 %, etc.) */
+  height: 0;
+  overflow: hidden;
+  top: 80px;
+}
+
+.map-responsive iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
 }
 
 /* --- DOMICILIO --- */
@@ -443,7 +463,7 @@ body {
 
 .Domicilio {
   width: 430px;
-  height: 286px;
+  height: 300px;
   position: absolute;
   top: 0px;
   overflow: hidden;
