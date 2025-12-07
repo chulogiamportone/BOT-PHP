@@ -221,12 +221,12 @@ function formatearTextoPersonalizado(textoRaw) {
   // 2. DEFINICIÓN DE TOKENS
   const T_BOLD = "###TOKEN_BOLD###";
   const T_VIOLET = "###TOKEN_VIOLET###";
-  const T_TAB = "###TOKEN_TAB###";
+  const T_BR = "###TOKEN_BR###";
 
-  // 3. REEMPLAZO
+  // 3. REEMPLAZO PREVIO (Normalización)
   texto = texto.replace(/\\r\\n|\r\n/g, T_BOLD);
-  texto = texto.replace(/\\n|\n/g, T_VIOLET);
-  texto = texto.replace(/\\t|\t/g, T_TAB);
+  texto = texto.replace(/\\t|\t/g, T_VIOLET);
+  texto = texto.replace(/\\n|\n/g, T_BR);
 
   // 4. PROCESAR ESTRUCTURA
   const partesVioleta = texto.split(T_VIOLET);
@@ -234,19 +234,22 @@ function formatearTextoPersonalizado(textoRaw) {
   return partesVioleta.map((parte, index) => {
 
     // --- ESTILOS INTERNOS ---
+
+    // A. Procesar Negrita
     let textoEstilizado = procesarEstilo(parte, T_BOLD, 'strong');
-    textoEstilizado = procesarEstilo(textoEstilizado, T_TAB, 'em');
+
+    // B. Procesar Salto de Línea (--- NUEVO ---)
+    // Buscamos todas las ocurrencias del token y las cambiamos por <br>
+    textoEstilizado = textoEstilizado.split(T_BR).join('<br />');
+
     // ------------------------
 
-    // C. Aplicar Estilo Violeta (Si es impar)
     // C. Aplicar Estilo Violeta (Si es impar - TÍTULOS)
     if (index % 2 === 1) {
       if (!textoEstilizado.trim()) return "";
 
       // ACÁ ESTÁ EL TRUCO:
-      // 1. </p> cierra el párrafo que abrió la función padre.
-      // 2. Ponés el H4.
-      // 3. <p> abrís el párrafo para el texto que sigue.
+      // Cierra párrafo anterior, pone título, abre nuevo párrafo.
       return `</p><p><h4 class="subtitulo-violeta">${textoEstilizado}</h4>`;
     }
 
@@ -255,15 +258,25 @@ function formatearTextoPersonalizado(textoRaw) {
   }).join('');
 }
 
-// Función auxiliar para cortar y envolver (reutilizable para Bold e Italic)
+// Función auxiliar (sin cambios)
 function procesarEstilo(texto, token, etiqueta) {
   if (!texto.includes(token)) return texto;
 
   return texto.split(token).map((fragmento, i) => {
-    // Si el índice es impar, aplicamos la etiqueta
     if (i % 2 === 1) {
       return `<${etiqueta}>${fragmento}</${etiqueta}>`;
     }
     return fragmento;
   }).join('');
+}
+
+// Función auxiliar dummy para que el código funcione si no la tenés
+function escapeHtml(text) {
+  if (!text) return text;
+  return text
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
 }
