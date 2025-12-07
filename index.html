@@ -109,11 +109,32 @@
                     <span class="bold">Emilio Jofré 473, </span>
                     <span>Quinta Sección, Mendoza, Argentina</span>
                 </div>
-                <div class="Gps">
+                <style>
+                    .map-responsive {
+                        position: relative;
+                        padding-bottom: 56.25%;
+                        /* proporción 16:9 — podés ajustar (ej: 50 %, 75 %, etc.) */
+                        height: 0;
+                        overflow: hidden;
+                    }
+
+                    .map-responsive iframe {
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
+                        border: 0;
+                    }
+                </style>
+
+                <div class="map-responsive">
                     <iframe loading="lazy" referrerpolicy="no-referrer-when-downgrade"
-                        src="https://www.google.com/maps?q=Emilio+Jofré+473,+M5500+Mendoza,+Argentina&z=15&output=embed">
+                        src="https://www.google.com/maps?q=Emilio+Jofré+473,+M5500+Mendoza,+Argentina&z=15&output=embed"
+                        allowfullscreen>
                     </iframe>
                 </div>
+
             </div>
         </section>
 
@@ -170,31 +191,22 @@
         </section>
 
         <section name="Blog_Index" id="Blog_Index">
-            <div class="Blog">
-                <div class="Frame9">
-                    <div class="Frame10">
-                        <img class="OzonoIstock21" src="">
-                    </div>
-                    <div class="Frame9_overlay">
-                        <div class="Frame11"></div>
-                        <div class="Blog_text">
-                            Ozono Médico como medicamento para el tratamiento del dolor crónico
-                        </div>
-                    </div>
-                </div>
-                <div class="Frame10_second">
-                    <div class="Frame10">
-                        <img class="OzonoIstock21" src="">
-                    </div>
-                    <div class="Frame9_overlay">
-                        <div class="Frame11"></div>
-                        <div class="Blog_text">
-                            Kinesiología integral y refuerzo del sistema inmunológico
-                        </div>
+
+            <!-- blog-latest-section.html -->
+            <div class="blog-latest" aria-labelledby="blog-latest-title">
+                <div class="container">
+                    <h2 id="blog-latest-title" class="blog-latest__heading">LO ÚLTIMO EN NUESTRO BLOG</h2>
+
+                    <!-- contenedor donde el JS inyectará las cards -->
+                    <div class="blog-latest__list notas-body" aria-live="polite"></div>
+
+                    <!-- botón para ver todas las notas (opcional) -->
+                    <div class="blog-latest__actions">
+                        <a href="/blog" class="btn btn--secondary">Ver todos los artículos</a>
                     </div>
                 </div>
-                <div class="LoUltimo">LO ÚLTIMO EN NUESTRO BLOG</div>
             </div>
+
         </section>
         <section name="Footer" id="Footer_Section">
             <div data-include="footer.html"></div>

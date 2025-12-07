@@ -211,3 +211,73 @@ async function initCards({ jsonUrl, containerId = 'cards-container' }) {
 
 // Exponer init para usarlo desde el HTML
 window.initCards = initCards;
+
+
+// blog-latest.js
+// Requiere: endpoint "/api/nota_get.php" que devuelve array de notas o detalle cuando se le pasa id.
+// Este script inyecta las últimas 2 notas en .notas-body
+document.addEventListener("DOMContentLoaded", () => {
+  const API = "/api/nota_get.php";
+  const container = document.querySelector(".notas-body");
+  if (!container) return;
+
+  // Helpers seguros
+  function escapeHtml(str) {
+    if (str === null || str === undefined) return "";
+    return String(str)
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#039;");
+  }
+
+  function escapeAttr(str) {
+    return escapeHtml(str).replace(/'/g, "&#39;");
+  }
+
+  // Renderiza lista (solo 2 últimas notas)
+  async function renderLatestTwo() {
+    try {
+      const res = await fetch(API);
+      const notas = await res.json();
+
+      if (!res.ok || !Array.isArray(notas)) {
+        container.innerHTML = `<p>No se pudieron cargar las notas.</p>`;
+        return;
+      }
+
+      if (notas.length === 0) {
+        container.innerHTML = `<p>No hay notas cargadas aún.</p>`;
+        return;
+      }
+
+      // Asumimos que la API devuelve en orden cronológico (si no, podés ordenar por fecha)
+      // Tomamos las 2 más recientes (últimas en el array o primeras según tu API)
+      // Aquí tomamos las primeras 2; si tu API devuelve ascendente, usar .slice(-2)
+      const latest = notas.slice(0, 2);
+
+      container.innerHTML = latest.map(n => {
+        const href = `?id=${encodeURIComponent(n.id)}`;
+        const imgHtml = n.imagen ? `<div class="card-note__media"><img loading="lazy" src="${escapeAttr(n.imagen)}" alt="${escapeAttr(n.titulo)}"></div>` : `<div class="card-note__media" aria-hidden="true"></div>`;
+        const titulo = escapeHtml(n.titulo || "Sin título");
+
+        return `
+          <a class="card-note" href="${href}" aria-label="Leer nota: ${titulo}">
+            ${imgHtml}
+            <div class="card-note__overlay">
+              <h3 class="card-note__title">${titulo}</h3>
+            </div>
+          </a>
+        `;
+      }).join("");
+
+    } catch (err) {
+      console.error("Error cargando notas:", err);
+      container.innerHTML = `<p>Error de conexión</p>`;
+    }
+  }
+
+  // Inicializar
+  renderLatestTwo();
+});

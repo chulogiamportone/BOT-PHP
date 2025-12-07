@@ -1,44 +1,47 @@
-
 body {
-    font-family: 'Montserrat', sans-serif;
-    margin: 0;
-    padding: 0;
-    display: flex; 
-    background-color: #f0f0f0;
-    
-   
-    width: 100%;
+  font-family: 'Montserrat', sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  background-color: #f0f0f0;
+
+
+  width: 100%;
 }
 
 
 .main-wrapper {
-          /* Ocupa el ancho disponible del celular */
-    max-width: 430px;     /* Se estira máximo hasta 860px (puedes poner 430px si prefieres mantenerlo angosto) */
-    
-    margin: 0 auto; 
-    position: relative;
-    background-color: white;
-    height: auto; 
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
-    display: flex;
-    flex-direction: column; 
-    
-    
+  /* Ocupa el ancho disponible del celular */
+  max-width: 430px;
+  /* Se estira máximo hasta 860px (puedes poner 430px si prefieres mantenerlo angosto) */
+
+  margin: 0 auto;
+  position: relative;
+  background-color: white;
+  height: auto;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+
+
 }
+
 /* --- CORRECCIÓN DEL FOOTER --- */
 
 /* El tag <footer> genérico */
 footer {
-    width: 100%;
-    margin-top: auto; /* Truco de Flexbox: Empuja el footer al final si sobra espacio */
-    position: relative;
+  width: 100%;
+  margin-top: auto;
+  /* Truco de Flexbox: Empuja el footer al final si sobra espacio */
+  position: relative;
 }
+
 /* Aseguramos que todas las secciones ocupen el ancho total */
 section {
-    width: 100% !important;
-    position: relative !important;
-    top: auto !important;
-    left: auto !important;
+  width: 100% !important;
+  position: relative !important;
+  top: auto !important;
+  left: auto !important;
 }
 
 /* Asegúrate de que los elementos dentro de .main-wrapper no excedan los 430px */
@@ -48,16 +51,7 @@ section {
 /*CONTACTO*/
 
 
-/* CONTACTO — VERSIÓN RESPONSIVE Y CORRECTA */
-.contacto-container {
-  width: 100%;
-  max-width: 430px;
-  margin: 0 auto;
-  padding: 40px 20px;
-  box-sizing: border-box;
-  position: relative; /* <-- vuelve al flujo normal */
-  background: white;
-}
+
 
 
 .contacto-content {
@@ -373,13 +367,13 @@ body {
 }
 
 /* --- TRATAMIENTOS --- */
-#Tratamientos_Index{
+#Tratamientos_Index {
   width: 430px;
-  height: 1400px;
   position: absolute;
   left: 0;
   top: 2100px;
 }
+
 .Tratamientos {
   width: 430px;
   height: 342px;
@@ -432,7 +426,7 @@ body {
 
 #cards-container {
   width: 430px;
-  height: 1456px;
+  height: 1150px;
   position: relative;
   background: white;
   overflow: hidden;
@@ -446,6 +440,7 @@ body {
   left: 0;
   top: 2300px;
 }
+
 .Domicilio {
   width: 430px;
   height: 286px;
@@ -487,10 +482,11 @@ body {
   position: absolute;
   overflow: hidden;
 }
+
 .Gps iframe {
-    width: 100%;
-    height: 100%;
-    border: none;
+  width: 100%;
+  height: 100%;
+  border: none;
 }
 
 
@@ -504,12 +500,14 @@ body {
 }
 
 .contacto-container {
-  width: 429px;
+  width: 430px;
   height: 900px;
   position: absolute;
   top: 0px;
   left: 0.5px;
   overflow: hidden;
+  box-sizing: border-box;
+  background: white;
 }
 
 .contacto-content {
@@ -573,4 +571,132 @@ body {
   color: white;
   font-size: 16px;
   font-weight: 700;
+}
+
+
+
+
+/* blog-latest.css */
+.blog-latest {
+  width: 100%;
+  padding: 36px 16px;
+  box-sizing: border-box;
+  background: #fff;
+  font-family: "Montserrat", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  color: #111;
+}
+
+.blog-latest .container {
+  max-width: 980px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.blog-latest__heading {
+  font-size: 18px;
+  font-weight: 700;
+  text-align: center;
+  margin: 0 0 18px;
+}
+
+/* Grid para mostrar 2 tarjetas. Se vuelve 1 columna en móvil. */
+.blog-latest__list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+  align-items: start;
+}
+
+/* Card */
+.card-note {
+  display: block;
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+  text-decoration: none;
+  background: #f5f5f5;
+  min-height: 220px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+  justify-content: center;
+}
+
+/* imagen de la card */
+.card-note__media {
+  width: 100%;
+  height: 220px;
+  display: block;
+  overflow: hidden;
+  background: linear-gradient(180deg, #e9e9e9, #f5f5f5);
+}
+
+.card-note__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* overlay negro semitransparente en la parte inferior */
+.card-note__overlay {
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.45);
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 12px;
+  display: flex;
+  align-items: flex-end;
+  min-height: 64px;
+  box-sizing: border-box;
+}
+
+/* título de la nota */
+.card-note__title {
+  align-self: center;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 700;
+  margin: 0;
+  line-height: 1.15;
+  word-wrap: break-word;
+}
+
+/* accesibilidad: focus visible */
+.card-note:focus {
+  outline: 3px solid rgba(80, 120, 230, 0.18);
+  outline-offset: 2px;
+}
+
+/* acciones */
+.blog-latest__actions {
+  margin-top: 14px;
+  text-align: center;
+}
+
+/* botón simple */
+.btn {
+  display: inline-block;
+  padding: 8px 14px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.btn--secondary {
+  background: #ffffff;
+  color: #111;
+  border: 1px solid #ddd;
+}
+
+/* Responsive */
+@media (max-width: 720px) {
+  .blog-latest__list {
+    grid-template-columns: 1fr;
+  }
+
+  .card-note__media {
+    height: 220px;
+  }
 }
