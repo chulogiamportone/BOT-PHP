@@ -11,7 +11,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
         rel="stylesheet">
- 
+
     <!-- AOS CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" />
 
@@ -196,7 +196,7 @@
                 <div class="LoUltimo">LO ÚLTIMO EN NUESTRO BLOG</div>
             </div>
         </section>
-        <section name="Footer" id="Footer">
+        <section name="Footer" id="Footer_Section">
             <div data-include="footer.html"></div>
         </section>
     </div>
@@ -214,45 +214,25 @@
     </script>
 
     <script>
-        let currentSlide = 0;
-        const slides = document.querySelectorAll('.slider-image');
-        const dots = document.querySelectorAll('.dot');
-        let slideInterval;
+        function ajustarEscala() {
+            // 1. Definimos el ancho base de tu diseño
+            const anchoDiseno = 429;
 
-        function changeSlide(index) {
-            slides.forEach(slide => slide.classList.remove('active'));
-            dots.forEach(dot => dot.classList.remove('active'));
+            // 2. Obtenemos el ancho actual de la ventana del usuario
+            const anchoVentana = window.innerWidth;
 
-            currentSlide = index;
-            slides[currentSlide].classList.add('active');
-            dots[currentSlide].classList.add('active');
+            // 3. Calculamos la escala (Ej: si la ventana es 860px, la escala será 2)
+            const escala = anchoVentana / anchoDiseno;
 
-            resetInterval();
+            // 4. Aplicamos el zoom al body o al contenedor principal
+            document.body.style.zoom = escala;
         }
 
-        function nextSlide() {
-            currentSlide = (currentSlide + 1) % slides.length;
-            changeSlide(currentSlide);
-        }
+        // Ejecutamos la función al cargar la página
+        ajustarEscala();
 
-        function startSlider() {
-            slideInterval = setInterval(nextSlide, 4000);
-        }
-
-        function resetInterval() {
-            clearInterval(slideInterval);
-            startSlider();
-        }
-
-        startSlider();
-
-        document.querySelector('.Slider').addEventListener('mouseenter', () => {
-            clearInterval(slideInterval);
-        });
-
-        document.querySelector('.Slider').addEventListener('mouseleave', () => {
-            startSlider();
-        });
+        // Y también cada vez que el usuario redimensione la ventana
+        window.addEventListener('resize', ajustarEscala);
     </script>
 </body>
 

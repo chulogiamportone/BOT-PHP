@@ -3,27 +3,27 @@ body {
     font-family: 'Montserrat', sans-serif;
     margin: 0;
     padding: 0;
-    display: flex; /* Para centrar el contenedor principal */
+    display: flex; 
+    background-color: #f0f0f0;
     
-
-    background-color: #f0f0f0; /* Un color de fondo para ver el efecto */
+   
+    width: 100%;
 }
 
 
-/* El contenedor principal ya está bien configurado como Flex Column */
 .main-wrapper {
-    width: 430px; 
+          /* Ocupa el ancho disponible del celular */
+    max-width: 430px;     /* Se estira máximo hasta 860px (puedes poner 430px si prefieres mantenerlo angosto) */
+    
     margin: 0 auto; 
     position: relative;
     background-color: white;
-    
-    /* CAMBIO: Quitamos min-height: 100vh */
-    height: auto; /* Esto le dice: "Mide lo que midan tus hijos (el contenido)" */
-    
+    height: auto; 
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
-    
     display: flex;
     flex-direction: column; 
+    
+    
 }
 /* --- CORRECCIÓN DEL FOOTER --- */
 
@@ -35,7 +35,7 @@ footer {
 }
 /* Aseguramos que todas las secciones ocupen el ancho total */
 section {
-    width: 100%;
+    width: 100% !important;
     position: relative !important;
     top: auto !important;
     left: auto !important;
@@ -48,19 +48,24 @@ section {
 /*CONTACTO*/
 
 
+/* CONTACTO — VERSIÓN RESPONSIVE Y CORRECTA */
 .contacto-container {
-  width: 429px;
-  height: 900px;
-  left: 0.50px;
-  top: 2965px;
-  position: absolute;
-  overflow: hidden;
+  width: 100%;
+  max-width: 430px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  box-sizing: border-box;
+  position: relative; /* <-- vuelve al flujo normal */
+  background: white;
 }
 
+
 .contacto-content {
-  width: 372.5px;
-  margin: 56px 28.26px;
+  width: 100%;
+  max-width: 372px;
+  margin: 0 auto;
 }
+
 
 .contacto-title {
   width: 100%;
