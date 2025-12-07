@@ -1,29 +1,26 @@
-.Footer{
-    width: 430px; 
-    height: 801px; 
-    left: 0px; 
-    position: absolute; 
-    overflow: hidden;
-    top: 4500px;
-}
-
-.Footer2{
-    width: 430px; 
-    height: 801px; 
-    left: 0px; 
-    top: 0px; 
-    position: absolute; 
+/* Clases internas del HTML inyectado */
+.Footer {
+    width: 100%; /* Que ocupe el ancho del padre (430px) */
+    height: 801px; /* Mantén tu altura de diseño */
+    position: relative; /* CAMBIO IMPORTANTE: Relative en vez de absolute */
+    top: auto; 
+    left: auto;
     overflow: hidden;
 }
 
-.Footer3{
-    width: 431px; 
-    height: 801px; 
-    left: -1px; 
-    top: 0px; 
-    position: absolute; 
+.Footer2 {
+    width: 100%;
+    height: 100%;
+    position: relative; /* Relative para seguir el flujo */
+    top: auto;
+    left: auto;
+}
+
+.Footer3 {
+    width: 100%;
+    height: 100%;
+    position: relative;
     background: linear-gradient(180deg, #824C91 0%, #4C2C53 100%); 
-    overflow: hidden;
 }
 
 .Redes{

@@ -1,3 +1,129 @@
+
+
+/* =========================================
+   1. ESTRUCTURA PRINCIPAL (Igual que el Index)
+   ========================================= */
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex; /* Para centrar el contenedor principal */
+    
+
+    background-color: #f0f0f0; /* Un color de fondo para ver el efecto */
+}
+
+
+.main-wrapper {
+     width: 430px; 
+    margin: 0 auto; 
+    position: relative;
+    background-color: white;
+    
+    /* CAMBIO: Quitamos min-height: 100vh */
+    height: auto; /* Esto le dice: "Mide lo que midan tus hijos (el contenido)" */
+    
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+    
+    display: flex;
+    flex-direction: column; 
+}
+
+
+/* =========================================
+   2. REINICIO DE SECCIONES (Para que se apilen)
+   ========================================= */
+
+/* Esto obliga a todas las secciones a dejar de flotar y ponerse una bajo otra */
+header,
+.TTulo,
+#Tratamientos_Index,
+.notas-body, 
+section {
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    width: 100% !important;
+    margin-bottom: 0;
+    transform: none !important; /* Por si acaso hay transformaciones */
+}
+
+
+/* =========================================
+   3. AJUSTES ESPECÍFICOS SIN CAMBIAR TAMAÑOS
+   ========================================= */
+
+/* TÍTULO "NUESTRO BLOG" */
+.TTulo {
+    /* Usamos flex para centrarlo horizontalmente */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    
+    /* Espaciado: 30px arriba (separación del header) y 30px abajo */
+    margin: 30px auto 0px auto !important; 
+    
+    /* Mantenemos tu ancho interno preferido */
+    max-width: 370px; 
+}
+
+
+/* SECCIÓN TRATAMIENTOS (Reutilizada) */
+#Tratamientos_Index {
+    padding-bottom: 40px; /* Un poco de aire abajo */
+    display: block;
+}
+
+/* Esto asegura que el contenido interno de Tratamientos se centre */
+.Tratamientos {
+    position: relative;
+    width: 100%;
+    height: auto; /* Permitimos que crezca */
+    min-height: 350px; /* Mantenemos la altura visual aproximada que tenías */
+    overflow: hidden;
+}
+
+/* CUERPO DE LAS NOTAS */
+.notas-body {
+    /* Quitamos el margen gigante de 200px que tenías en el HTML */
+    margin-top: 20px !important; 
+    margin-bottom: 40px !important;
+    
+}
+
+
+/* =========================================
+   4. COMPONENTES INTERNOS (Botones y Cards)
+   ========================================= */
+
+/* Botón Solicitar */
+.boton-solicitar {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 30px 0; /* Separación clara */
+}
+
+
+
+
+
+/* =========================================
+   5. FOOTER (Pegado al fondo)
+   ========================================= */
+.Footer {
+    width: 100%;
+    margin-top: auto; /* Empuja al fondo si hay espacio sobrante */
+}
+
+
+
+
+
+
 .notas-body {
   position: relative;
   width: 430px;
@@ -88,8 +214,11 @@ p {
 .botones-navegacion {
   display: flex;
   justify-content: space-between;
-  width: 370px;
+  
   margin: 30px auto;
+  width: 100%;
+  max-width: 370px; /* Tu ancho original */
+  
 }
 
 .botones-navegacion button {
@@ -118,17 +247,23 @@ p {
 /*NOTAS CARDS */
 /* Contenedor principal de la tarjeta */
 .card-nota {
-  width: 371px;
-  height: 276px;
-  justify-self: center;
-  margin: 20px auto;
+  max-width: 371px;
+  width: 100%; 
+  height: 276px; /* Tu altura fija original */
+  margin: 20px auto; /* Centrado */
   position: relative;
+  background-color: #f0f0f0;
+ 
+  
+  justify-self: center;
+  
+  
   /* Para poder posicionar el texto encima */
   overflow: hidden;
   /* Para recortar la imagen si sobra */
   border-radius: 0;
   /* Ajusta si necesitas bordes redondeados */
-  background-color: #f0f0f0;
+  
   /* Fondo por si falla la imagen */
 }
 

@@ -5,17 +5,40 @@ body {
     padding: 0;
     display: flex; /* Para centrar el contenedor principal */
     
-    min-height: 5500px; /* Para que el body ocupe al menos toda la altura de la ventana */
+
     background-color: #f0f0f0; /* Un color de fondo para ver el efecto */
 }
 
+
+/* El contenedor principal ya está bien configurado como Flex Column */
 .main-wrapper {
-    width: 430px; /* Ancho fijo de 430px */
+    width: 430px; 
+    margin: 0 auto; 
+    position: relative;
+    background-color: white;
     
-    background-color: white; /* Fondo blanco para el contenido */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra sutil para destacarlo */
-     /* Para que los elementos absolutos dentro se posicionen respecto a este */
-    overflow: hidden; /* Para que el contenido no se desborde */
+    /* CAMBIO: Quitamos min-height: 100vh */
+    height: auto; /* Esto le dice: "Mide lo que midan tus hijos (el contenido)" */
+    
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+    
+    display: flex;
+    flex-direction: column; 
+}
+/* --- CORRECCIÓN DEL FOOTER --- */
+
+/* El tag <footer> genérico */
+footer {
+    width: 100%;
+    margin-top: auto; /* Truco de Flexbox: Empuja el footer al final si sobra espacio */
+    position: relative;
+}
+/* Aseguramos que todas las secciones ocupen el ancho total */
+section {
+    width: 100%;
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
 }
 
 /* Asegúrate de que los elementos dentro de .main-wrapper no excedan los 430px */
@@ -405,8 +428,7 @@ body {
 #cards-container {
   width: 430px;
   height: 1456px;
-  position: absolute;
-  top: 350px;
+  position: relative;
   background: white;
   overflow: hidden;
 }
@@ -507,9 +529,8 @@ body {
 /* --- BLOG --- */
 .Blog {
   width: 430px;
-  height: 703px;
-  position: absolute;
-  top: 4000px;
+  height: 400px;
+  position: relative;
   overflow: hidden;
 }
 
