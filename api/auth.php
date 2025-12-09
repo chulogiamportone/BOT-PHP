@@ -1,79 +1,60 @@
 <?php
-session_start();
-require 'config.php';
+// Poner esto AL PRINCIPIO de index.php Y de api/auth.php
+// (Justo después de <?php y antes de cualquier otra cosa)
 
+session_set_cookie_params([
+    'lifetime' => 0,            // Borrar al cerrar navegador
+    'path' => '/',              // Disponible en todo el sitio
+    'domain' => null,           // null = usar el dominio actual automáticamente
+    'secure' => true,           // ¡OBLIGATORIO PARA HTTPS!
+    'httponly' => true,         // Seguridad contra XSS
+    'samesite' => 'Lax'         // Necesario para que la cookie sobreviva redirecciones
+]);
+
+session_name('MICAEL_APP');
+session_start();
+
+require 'config.php'; 
+
+// Headers para respuesta JSON
 header('Content-Type: application/json; charset=UTF-8');
 
-// Login
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['action'] === 'login') {
-    $email = trim($_POST['email'] ?? '');
-    $password = trim($_POST['password'] ?? '');
-    
-    if (empty($email) || empty($password)) {
-        http_response_code(400);
-        echo json_encode(['error' => 'Email y contraseña son requeridos']);
-        exit;
-    }
-    
-    // Buscar usuario en la base de datos
-    $stmt = $pdo->prepare("SELECT id, nombre, email, password FROM usuarios WHERE email = ?");
+// --- LÓGICA DE LOGIN ---
+$action = $_POST['action'] ?? '';
+
+if ($action === 'login') {
+    $email = $_POST['email'] ?? '';
+    $password = $_POST['password'] ?? '';
+
+    // Buscar usuario en DB
+    // Asegúrate que tu tabla y columnas coincidan
+    $stmt = $pdo->prepare("SELECT id, nombre, email, password FROM usuarios WHERE email = ? LIMIT 1");
     $stmt->execute([$email]);
     $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
-    
-    if (!$usuario) {
-        http_response_code(401);
-        echo json_encode(['error' => 'Credenciales inválidas']);
-        exit;
-    }
-    
+
     // Verificar contraseña
-    if (!password_verify($password, $usuario['password'])) {
-        http_response_code(401);
-        echo json_encode(['error' => 'Credenciales inválidas']);
-        exit;
-    }
-    
-    // Login exitoso - crear sesión
-    $_SESSION['user_id'] = $usuario['id'];
-    $_SESSION['user_name'] = $usuario['nombre'];
-    $_SESSION['user_email'] = $usuario['email'];
-    
-    echo json_encode([
-        'success' => true,
-        'message' => 'Login exitoso',
-        'user' => [
-            'id' => $usuario['id'],
-            'nombre' => $usuario['nombre'],
-            'email' => $usuario['email']
-        ]
-    ]);
-    exit;
-}
+    if ($usuario && password_verify($password, $usuario['password'])) {
+        
+        // Asignar variables de sesión
+        $_SESSION['user_id'] = $usuario['id'];
+        $_SESSION['user_name'] = $usuario['nombre'];
 
-// Logout
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['action'] === 'logout') {
-    session_destroy();
-    echo json_encode(['success' => true, 'message' => 'Logout exitoso']);
-    exit;
-}
+        // FORZAR ESCRITURA DE SESIÓN ANTES DE SEGUIR
+        session_write_close();
 
-// Verificar sesión
-if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['action']) && $_GET['action'] === 'check') {
-    if (isset($_SESSION['user_id'])) {
-        echo json_encode([
-            'authenticated' => true,
-            'user' => [
-                'id' => $_SESSION['user_id'],
-                'nombre' => $_SESSION['user_name'],
-                'email' => $_SESSION['user_email']
-            ]
-        ]);
+        // LIMPIAR CUALQUIER BASURA ANTERIOR Y MANDAR JSON
+        ob_clean(); 
+        echo json_encode(['success' => true]);
+        exit(); // Mata el proceso aquí para evitar duplicados
     } else {
-        echo json_encode(['authenticated' => false]);
+        // Error de credenciales
+        ob_clean();
+        echo json_encode(['success' => false, 'error' => 'Usuario o contraseña incorrectos']);
+        exit();
     }
-    exit;
 }
 
-http_response_code(400);
-echo json_encode(['error' => 'Acción no válida']);
-?>
+// Si la acción no es login
+ob_clean();
+echo json_encode(['success' => false, 'error' => 'Acción no válida']);
+exit();

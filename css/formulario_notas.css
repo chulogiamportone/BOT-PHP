@@ -169,3 +169,65 @@ textarea {
     border: 1px solid #f5c6cb;
     display: block;
 }
+
+/* --- AGREGAR ESTO AL FINAL DE TU CSS --- */
+
+/* 1. Importante: Agregar el tipo password a los estilos generales de inputs 
+      (Copia esta regla y reemplaza la existente o agrégala al final) */
+input[type="text"],
+input[type="url"],
+input[type="password"], /* <--- Agregado nuevo */
+textarea {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #e0e0e0;
+    border-radius: 5px;
+    font-size: 14px;
+    transition: border-color 0.3s;
+}
+
+/* 2. Estilos específicos para el Login */
+
+/* Hacemos que la caja sea más angosta para que parezca un login y no un formulario enorme */
+.login-container {
+    max-width: 450px; 
+    margin-top: 50px; /* Un poco más de aire arriba */
+}
+
+/* Estilos del Logo */
+.logo-wrapper {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.logo-img {
+    max-width: 60%;
+    border-radius: 20px;
+    background: linear-gradient(180deg, #824C91 0%, #4C2C53 100%);
+}
+
+/* Estilo para el checkbox de 'Recordar' */
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.checkbox-group input {
+    width: auto; /* Evita que ocupe el 100% */
+}
+
+/* Link de 'Olvidaste contraseña' */
+.form-footer {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.form-footer a {
+    color: #667eea;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.form-footer a:hover {
+    text-decoration: underline;
+}

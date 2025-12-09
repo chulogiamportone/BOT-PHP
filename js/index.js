@@ -1,7 +1,7 @@
 
 window.addEventListener("DOMContentLoaded", () => {
-    const footer = document.querySelector("footer");
-    document.body.appendChild(footer);
+  const footer = document.querySelector("footer");
+  document.body.appendChild(footer);
 });
 
 
@@ -281,3 +281,4 @@ document.addEventListener("DOMContentLoaded", () => {
   // Inicializar
   renderLatestTwo();
 });
+

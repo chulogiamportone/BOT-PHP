@@ -19,13 +19,13 @@
     <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
 
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="puntogis-12.ico">
+    <link rel="icon" type="image/png" href="/images/favicon/puntogis-12.ico">
 
     <!-- Hojas de estilo -->
-    <link rel="stylesheet" href="css/index.css">
-    <link rel="stylesheet" href="css/nav_bar.css">
-    <link rel="stylesheet" href="css/slider.css">
-    <link rel="stylesheet" href="css/nota.css">
+    <link rel="stylesheet" href="/css/index.css">
+    <link rel="stylesheet" href="/css/nav_bar.css">
+    <link rel="stylesheet" href="/css/slider.css">
+    <link rel="stylesheet" href="/css/nota.css">
 </head>
 
 
@@ -33,7 +33,7 @@
 <body>
     <div class="main-wrapper">
         <header>
-            <div data-include="nav_bar.html"></div>
+            <div data-include="/nav_bar.html"></div>
         </header>
         <div class="TTulo"> 
             <div style="align-self: stretch; height: 36.85px; text-align: center; justify-content: center; display: flex; flex-direction: column; color: black; font-size: 20px; font-family: Montserrat; font-weight: 600; word-wrap: break-word">
@@ -86,45 +86,22 @@
 
 
         <section class="Footer">
-            <div data-include="footer.html"></div>
+            <div data-include="/footer.html"></div>
         </section>
     </div>
     <!--<script src="js/slider.js"></script>-->
-    <script src="js/include_html.js"></script>
-    <script src="js/index.js"></script>
-    <script src="js/contacto.js"></script>
-    <script src="js/burguer.js"></script>
-    <script src="js/nota.js"></script>
-
-
+    <script src="/js/include_html.js"></script>
+    <script src="/js/contacto.js"></script>
+    <script src="/js/burguer.js"></script>
+    <script src="/js/nota.js"></script>
+    <script src="/js/ajuste_escala.js"></script>
     <script>
         window.initCards({ jsonUrl: '/data/tratamientos.json', containerId: 'cards-container' });
         window.onCardMoreInfo = (card) => {
             alert(`Más información: ${card.title}`);
         };
     </script>
-    <script>
-        function ajustarEscala() {
-            // 1. Definimos el ancho base de tu diseño
-            const anchoDiseno = 429;
-
-            // 2. Obtenemos el ancho actual de la ventana del usuario
-            const anchoVentana = window.innerWidth;
-
-            // 3. Calculamos la escala (Ej: si la ventana es 860px, la escala será 2)
-            const escala = anchoVentana / anchoDiseno;
-
-            // 4. Aplicamos el zoom al body o al contenedor principal
-            document.body.style.zoom = escala;
-        }
-
-        // Ejecutamos la función al cargar la página
-        ajustarEscala();
-
-        // Y también cada vez que el usuario redimensione la ventana
-        window.addEventListener('resize', ajustarEscala);
-    </script>
-
+  
 
 </body>
 

@@ -1,0 +1,22 @@
+Options -MultiViews
+RewriteEngine On
+
+# Si tu web está en una subcarpeta (ej: tudominio.com/juego), cambia / por /juego/
+# Si está en la raíz, déjalo así:
+RewriteBase /
+
+# --- REGLA 1: INMUNIDAD A LOS ASSETS ---
+# Si la url pide algo de estas carpetas, SE ACABÓ, no proceses más reglas.
+# Esto garantiza que tus estilos e imágenes carguen sí o sí.
+RewriteRule ^(css|js|images|api|data|figma)($|/) - [L]
+
+# --- REGLA 2: PROTECCIÓN DE VISTAS ---
+# Bloquear acceso directo a la carpeta vistas desde el navegador
+RewriteRule ^vistas/ - [F,L]
+
+# --- REGLA 3: ENRUTADOR ---
+# Si no es un archivo real y no es un directorio real...
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+# ...mándalo al index.php
+RewriteRule ^(.*)$ index.php?ruta=$1 [QSA,L]

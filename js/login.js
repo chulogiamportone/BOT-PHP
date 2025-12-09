@@ -1,49 +1,43 @@
-const form = document.getElementById('loginForm');
-const errorMessage = document.getElementById('errorMessage');
-const loginBtn = document.getElementById('loginBtn');
+// Esperamos a que todo el HTML esté cargado antes de ejecutar nada
+document.addEventListener('DOMContentLoaded', function () {
 
-form.addEventListener('submit', async (e) => {
-    e.preventDefault();
+    const loginForm = document.getElementById('loginForm');
 
-    const email = document.getElementById('email').value.trim();
-    const password = document.getElementById('password').value;
+    // Verificamos si el formulario realmente existe para evitar el error
+    if (loginForm) {
 
-    // Ocultar mensaje de error previo
-    errorMessage.classList.remove('show');
-    errorMessage.textContent = '';
-    
-    // Deshabilitar botón durante el proceso
-    loginBtn.disabled = true;
-    loginBtn.textContent = 'Ingresando...';
+        loginForm.addEventListener('submit', function (e) {
+            e.preventDefault();
 
-    try {
-        const formData = new FormData();
-        formData.append('action', 'login');
-        formData.append('email', email);
-        formData.append('password', password);
+            const formData = new FormData(loginForm);
 
-        const response = await fetch('/auth.php', {
-            method: 'POST',
-            body: formData
+            // AGREGAMOS LA ACCIÓN PARA EL NUEVO INDEX.PHP
+            formData.append('action', 'login');
+
+            fetch('index.php', {
+                method: 'POST',
+                body: formData
+            })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Error en la red o servidor');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    if (data.success) {
+                        window.location.href = './';
+                    } else {
+                        alert(data.error || 'Error desconocido');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('Ocurrió un error al intentar iniciar sesión.');
+                });
         });
 
-        const data = await response.json();
-
-        if (response.ok && data.success) {
-            // Login exitoso - redirigir al dashboard
-            window.location.href = '/dashboard';
-        } else {
-            // Mostrar error
-            errorMessage.textContent = data.error || 'Error al iniciar sesión';
-            errorMessage.classList.add('show');
-        }
-    } catch (err) {
-        console.error('Error de conexión:', err);
-        errorMessage.textContent = 'Error de conexión. Intenta nuevamente.';
-        errorMessage.classList.add('show');
-    } finally {
-        // Rehabilitar botón
-        loginBtn.disabled = false;
-        loginBtn.textContent = 'Ingresar';
+    } else {
+        console.error("Error: No se encontró el formulario con id='formLogin'. Revisa tu HTML.");
     }
 });
