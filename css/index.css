@@ -2,7 +2,7 @@
 html {
     background: linear-gradient(180deg, #824C91 0%, #4C2C53 100%);
     width: 100%;
-    height: 100%;
+    height: auto;
     background-attachment: fixed;
 }
 
@@ -312,7 +312,7 @@ body {
 }
 
 /* --- AGENDA --- */
-#Agenda_Index {
+#profesionales {
   width: 430px;
   height: 224px;
   position: absolute;
@@ -324,7 +324,7 @@ body {
 .Agenda {
   width: 430px;
   height: 224px;
-  position: absolute;
+  position: relative;
   left: 0;
   top: 0px;
   background: linear-gradient(180deg, #824C91 0%, #4C2C53 100%);
@@ -378,7 +378,7 @@ body {
 }
 
 /* --- TRATAMIENTOS --- */
-#Tratamientos_Index {
+#tratamientos{
   width: 430px;
   position: absolute;
   left: 0;

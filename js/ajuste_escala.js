@@ -3,7 +3,7 @@
 
 function ajustarEscala() {
   // 1. Ancho base de tu diseño (móvil)
-  const anchoDiseno = 429;
+  const anchoDiseno = 430;
 
   // 2. Límite máximo (donde quieres que deje de crecer)
   // Puedes cambiar 1080 por otro número si quieres que pare antes o después

@@ -1,23 +1,60 @@
+body {
+  min-height: auto !important;
 
-
-header {
-    width: 100%;
-   
 }
 
-/* --- SECCIONES Y FOOTER --- */
-section {
-    width: 100%;
-    box-sizing: border-box;
+.main-wrapper {
+  margin-bottom: auto !important;
+  min-height: auto !important;
+    
 }
 
-footer {
-    width: 100%;
-    margin-top: auto; /* Empuja el footer al final */
+/* =========================================
+   1. ESTRUCTURA FIJA (OBLIGATORIO PARA EL SCRIPT DE ESCALA)
+   ========================================= */
+
+/* Definimos el lienzo base de 430px */
+.main-wrapper {
+    width: 430px !important;
+    max-width: 430px !important;
+    margin: 0 auto;
+    background-color: white;
     position: relative;
+    overflow-x: hidden;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
-/* --- LISTA DE PROFESIONALES (Card pequeña) --- */
+/* Header, Footer y Secciones se ajustan a esos 430px */
+header, 
+footer, 
+section, 
+.Footer, 
+.TTulo {
+    width: 100% !important;
+    max-width: 430px !important;
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    box-sizing: border-box !important;
+    transform: none !important;
+}
+
+/* =========================================
+   2. CUERPO DE LA LISTA
+   ========================================= */
+
+.notas-body, /* Usas esta clase en el HTML */
+.card-container {
+    width: 100% !important; /* Llena los 430px */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 15px; /* Margen interno para que no toque bordes */
+    box-sizing: border-box !important;
+    margin-top: 20px;
+}
 
 .vector-divider {
     width: 100%;
@@ -26,46 +63,38 @@ footer {
     margin-bottom: 20px;
 }
 
-.card-container {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 0 15px; /* Espacio a los costados para que no pegue al borde */
-    box-sizing: border-box;
-}
+/* =========================================
+   3. CARD DE LISTA (Responsive dentro de 430px)
+   ========================================= */
 
 .professional-card {
     width: 100%;
     display: flex;
-    flex-direction: row; /* Foto al lado del texto */
+    flex-direction: row;
     align-items: center;
-    gap: 15px; /* Espacio entre foto y texto */
+    gap: 15px;
     margin-bottom: 20px;
 }
 
-/* Imagen de perfil en lista */
 .profile-image {
-    width: 100px; /* Un poco más chica para dar espacio al texto */
+    width: 100px;
     height: 100px;
-    min-width: 100px; /* Evita que se aplaste */
+    min-width: 100px; /* Evita deformación */
     border-radius: 50%;
     object-fit: cover;
 }
 
-/* Contenedor de info */
 .card-info {
-    flex: 1; /* Ocupa todo el espacio restante */
+    flex: 1;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: flex-start; /* Alineado a la izquierda */
+    align-items: flex-start;
     gap: 5px;
 }
 
-/* Texto nombre */
 .professional-name {
-    width: 100%; /* Flexible */
+    width: 100%;
     color: #000000;
     font-size: 16px;
     font-weight: 700;
@@ -78,9 +107,8 @@ footer {
     font-size: 16px;
 }
 
-/* Texto especialidades */
 .professional-specialties {
-    width: 100%; /* Flexible */
+    width: 100%;
     color: #000000;
     font-size: 13px;
     font-weight: 400;
@@ -88,7 +116,6 @@ footer {
     text-align: left;
 }
 
-/* Botón Leer Más */
 .button-container {
     width: 100%;
     display: flex;
@@ -105,15 +132,20 @@ footer {
     cursor: pointer;
     text-decoration: none;
     text-transform: uppercase;
+    padding: 0;
 }
 
-
-/* --- DETALLE DE PROFESIONAL (Pantalla completa) --- */
+/* =========================================
+   4. DETALLE PROFESIONAL (Pantalla Completa)
+   ========================================= */
 
 .prof-detalle {
-    width:430px;
+    width: 100% !important; /* Ocupa los 430px del wrapper */
     padding: 20px;
     box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .prof-detalle__card {
@@ -122,13 +154,10 @@ footer {
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* Quitamos shadow exagerado si prefieres limpieza */
-    /* box-shadow: 0 10px 30px rgba(0,0,0,0.05); */
 }
 
-/* CORRECCIÓN DE IMAGEN GIGANTE */
 .prof-detalle__avatar-wrapper {
-    width: 150px; /* Mucho más controlado que 240px */
+    width: 150px;
     height: 150px;
     border-radius: 50%;
     overflow: hidden;
@@ -143,7 +172,6 @@ footer {
     object-fit: cover;
 }
 
-/* Info Detalle */
 .prof-detalle__info {
     width: 100%;
     text-align: center;
@@ -164,24 +192,21 @@ footer {
     margin: 0 0 20px 0;
 }
 
-/* Descripción larga - CORRECCIÓN DE ANCHO */
 .prof-detalle__descripcion {
-    width: 100%; /* Ocupa el ancho disponible */
-    max-width: 100%;
+    width: 100%;
     font-size: 14px;
     line-height: 1.6;
     color: #444;
-    text-align: left; /* Lectura más natural */
-    padding: 0 10px;
-    box-sizing: border-box;
+    text-align: left;
+    /* padding: 0; Importante no agregar padding extra si el padre ya tiene */
 }
 
-
-/* --- NAVEGACIÓN (Botones Anterior/Siguiente) --- */
-/* Esto faltaba en tu CSS anterior */
+/* =========================================
+   5. NAVEGACIÓN
+   ========================================= */
 
 .navegacion_botones {
-    width: 100%;
+    width: 100% !important;
     padding: 20px 30px;
     box-sizing: border-box;
 }
@@ -197,7 +222,7 @@ footer {
 .btn-siguiente {
     background: none;
     border: none;
-    color: #824C91; /* Color violeta de marca */
+    color: #824C91;
     font-family: 'Montserrat', sans-serif;
     font-weight: 600;
     font-size: 14px;
@@ -208,14 +233,83 @@ footer {
     transition: opacity 0.3s;
 }
 
-.btn-anterior:hover, 
-.btn-siguiente:hover {
-    opacity: 0.7;
+/* Footer pegado al fondo */
+footer {
+    width: 100% !important;
+    margin-top: auto;
 }
 
-.btn-anterior:disabled, 
-.btn-siguiente:disabled {
-    opacity: 0.3;
-    cursor: default;
-    filter: grayscale(100%);
+
+
+/* =========================================
+   6  BANNER PROFESIONAL (Reutilizable)
+   ========================================= */
+
+.card-profesional {
+    /* Estructura base */
+    width: 100%;
+    max-width: 430px; /* Tamaño máximo similar al original, pero flexible */
+    background-color: white;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden; /* Para que nada se salga de los bordes */
+    font-family: 'Montserrat', sans-serif;
+    margin: 0 auto; /* Para centrar la tarjeta si está sola */
+}
+
+.card-header {
+    background: linear-gradient(180deg, #824C91 0%, #4C2C53 100%);
+    padding: 15px 20px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 85px;
+}
+
+.card-header h2 {
+    color: white;
+    font-size: 18px;
+    font-weight: 500;
+    margin: 0;
+    line-height: 1.4;
+}
+
+.card-header strong {
+    font-weight: 700;
+}
+
+.card-header .subtitulo {
+    display: block; /* Fuerza el salto de línea */
+    margin-top: 5px;
+}
+
+.card-imagen-container {
+    width: 100%;
+    height: 287px; /* Altura fija para mantener proporción del diseño */
+    overflow: hidden;
+}
+
+.card-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* La imagen se recorta bien sin deformarse */
+    display: block;
+}
+
+.card-body {
+    padding: 20px;
+    text-align: center;
+    /* Nota: En tu código original el texto era blanco (#fff). 
+       Si el fondo es blanco, no se lee. Lo cambié a un gris oscuro/violeta. 
+       Si querías fondo oscuro abajo, cambia el background-color aquí. */
+    color: #4C2C53; 
+}
+
+.card-body p {
+    font-size: 14px;
+    line-height: 1.4;
+    font-weight: 500;
+    margin: 0;
 }

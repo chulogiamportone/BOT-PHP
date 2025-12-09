@@ -1,4 +1,14 @@
 
+body {
+  min-height: auto !important;
+
+}
+
+.main-wrapper {
+  margin-bottom: auto !important;
+    
+}
+
 
 
 
@@ -9,8 +19,6 @@
 /* Esto obliga a todas las secciones a dejar de flotar y ponerse una bajo otra */
 header,
 .TTulo,
-#Tratamientos_Index,
-.notas-body, 
 section {
     position: relative !important;
     top: auto !important;
@@ -87,7 +95,7 @@ section {
    ========================================= */
 .Footer {
     width: 100%;
-    margin-top: auto; /* Empuja al fondo si hay espacio sobrante */
+    
 }
 
 
@@ -97,7 +105,7 @@ section {
 
 .notas-body {
   position: relative;
-  width: 430px;
+  width: 430px !important;
   margin: 0 auto;
   font-family: "Montserrat", sans-serif;
   color: black;

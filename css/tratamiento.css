@@ -1,78 +1,152 @@
+
+body {
+  min-height: auto !important;
+
+}
+
+.main-wrapper {
+  margin-bottom: auto !important;
+    
+}
+
+
 /* =========================================
-   1. VARIABLES Y GENERALES
+   1. RESET Y ESTRUCTURA BASE (ORIGINAL RESTAURADO)
    ========================================= */
+header, .TTulo, .tratamientos-body, section, footer, .Footer {
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    width: 100% !important;
+    margin-bottom: 0;
+    transform: none !important;
+}
 
-/* (Asumiendo que aquí van estilos de tipografía y colores base que no has incluido) */
-
-/* General Typography for .notas-body scope */
-.notas-body, .tratamiento-detalle {
+/* Contenedor principal fijo */
+.tratamientos-body {
+    display: block;
+    position: relative;
+    width: 430px;
+    margin: 20px auto 40px auto !important;
+    padding: 0;
+    box-sizing: border-box;
     font-family: "Montserrat", sans-serif;
-    color: black;
 }
 
-/* Titulos Globales */
-h2,
-h3,
-h4 {
-    font-family: "Montserrat", sans-serif;
-    font-weight: 700;
-    margin-bottom: 10px;
-    color: black;
-}
-
-p {
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 1.5;
-    margin-bottom: 10px;
-}
-
-/* TÍTULO "NUESTRO BLOG" O SIMILAR */
+/* Título del listado */
 .TTulo {
-    display: flex;
+    display: flex !important;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-start;
-    margin: 30px auto 0px auto !important; 
-    max-width: 370px; /* Mantiene el ancho estable para el título */
-    width: 100%; /* CRÍTICO: Asegura que ocupe el ancho del padre hasta 370px */
+    justify-content: center;
+    margin-top: 30px !important;
+    margin-bottom: 20px !important;
+    max-width: 430px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 /* =========================================
-   2. TRATAMIENTOS DETALLE (Específicos para el detalle)
+   2. CARDS DE LISTADO (ORIGINAL RESTAURADO)
    ========================================= */
+/* Estas reglas NO tocan el detalle, solo el listado */
+.lista-tratamientos {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    align-items: center;
+}
 
-/* Contenedor principal para el detalle de un tratamiento */
+.card-tratamiento {
+    width: 430px;  /* Ancho original */
+    height: 276px; /* Alto original */
+    margin: 0 auto;
+    position: relative;
+    background-color: #f0f0f0;
+    overflow: hidden;
+    /* Sin border-radius aquí, como en tu original */
+}
+
+.card-tratamiento__media {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+.card-tratamiento__media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.card-tratamiento__overlay {
+    width: 100%;
+    height: 64px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 2;
+    background-color: rgba(0, 0, 0, 0.39);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
+.card-tratamiento__titulo {
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    text-align: center;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* =========================================
+   3. ESTILOS ESPECÍFICOS PARA EL DETALLE (NUEVO)
+   ========================================= */
+/* Aquí aplicamos el estilo "Notas" SOLO a la estructura generada por el JS */
+
+/* Contenedor del detalle (estilo Notas) */
 .tratamiento-detalle {
     width: 430px;
-    max-width: 430px;
     margin: 0 auto;
-    padding: 20px;
+    padding: 20px; /* Padding interno como en Notas */
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
     gap: 20px;
-    /* CRÍTICO: Mantiene una forma inicial si el contenido es escaso */
-    min-height: 200px; 
+    color: black;
+    font-family: 'Montserrat', sans-serif;
 }
 
-/* Título principal del tratamiento */
+/* Título del detalle (estilo Notas) */
 .tratamiento-titulo {
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 700;
     text-align: center;
     margin: 0;
     line-height: 1.4;
-    color: #824C91;
 }
 
-/* Imagen del tratamiento */
+/* Imagen del detalle (estilo Notas: con bordes redondeados) */
 .tratamiento-imagen-container {
     width: 100%;
-    margin: 0;
+    /* CLAVE: Bordes redondeados como en notas */
     border-radius: 8px;
     overflow: hidden;
     background-color: #D9D9D9;
+    margin: 0;
 }
 
 .tratamiento-imagen {
@@ -82,97 +156,112 @@ p {
     object-fit: cover;
 }
 
-/* Cuerpo del texto (descripción y subtítulos) */
+/* Cuerpo del texto (estilo Notas: tipografía y espaciado) */
 .tratamiento-cuerpo {
-    /* CRÍTICO: Asegura que el cuerpo de texto use el ancho completo */
-    width: 100%; 
-    min-height: 20px; /* CRÍTICO: Evita el colapso vertical si está vacío */
+    width: 100%;
     font-size: 14px;
     font-weight: 400;
-    line-height: 1.6;
+    line-height: 1.6; /* Interlineado más amplio de Notas */
     word-wrap: break-word;
 }
 
-/* Subtítulos dentro del cuerpo */
-.tratamiento-cuerpo h3 {
-    font-size: 16px;
-    font-weight: 700;
-    display: block;
-    margin-top: 15px;
-    margin-bottom: 5px;
-    color: black;
-}
-
-/* Negritas dentro del párrafo (CRÍTICO: debe ser inline) */
-.tratamiento-cuerpo strong {
-    font-weight: 700;
-    display: inline;
-    margin: 0;
-    color: inherit;
-}
-
-/* Listas (si las hay) */
-.tratamiento-cuerpo ul, .tratamiento-cuerpo ol {
-    padding-left: 20px;
+.tratamiento-cuerpo p {
     margin-bottom: 10px;
 }
 
-.tratamiento-cuerpo li {
+/* Negritas en el cuerpo */
+.tratamiento-cuerpo h3,
+.tratamiento-cuerpo strong {
+    font-weight: 700;
+    color: black;
+    margin-top: 15px;
     margin-bottom: 5px;
 }
 
+/* === CLASE CRÍTICA PARA EL JS (Subtítulos Violetas) === */
+/* Copiada exactamente del estilo de Notas */
+.subtitulo-violeta {
+    color: #824C91;
+    font-weight: 600;
+    font-size: 1.1em;
+    display: inline; /* Importante para que fluya con el texto */
+    margin-right: 5px;
+    margin-top: 2rem;
+}
+
+/* Quitar margen si es el primer elemento */
+.tratamiento-cuerpo > .subtitulo-violeta:first-of-type {
+    margin-top: 0;
+}
+
 /* =========================================
-   3. REINICIO DE SECCIONES Y AJUSTES GLOBAL (Responsive)
+   4. BOTONES (LISTADO Y DETALLE)
    ========================================= */
 
-/* Esto obliga a todas las secciones a dejar de flotar y ponerse una bajo otra */
-header,
-.TTulo,
-#Tratamientos_Index,
-.notas-body, 
-section {
-    position: relative !important;
-    top: auto !important;
-    left: auto !important;
-    right: auto !important;
-    width: 100% !important;
-    margin-bottom: 0;
-    transform: none !important; 
-}
-
-/* Ajuste de .notas-body (donde irán los tratamientos/notas) */
-.notas-body {
-    margin-top: 20px !important; 
-    margin-bottom: 40px !important;
-    position: relative;
-    width: 100%;
-    max-width: 430px; /* Ancho de referencia estable */
-    margin: 20px auto 40px auto !important;
-    /* CRÍTICO: Para la estabilidad si es el contenedor de la lista de notas/tratamientos */
-    padding: 0 10px; 
-    box-sizing: border-box;
-    min-height: 50px; 
-}
-
-/* Ajuste del botón Solicitar consulta */
+/* Contenedor del botón */
 .boton-solicitar {
     width: 100%;
     display: flex;
     justify-content: center;
-    margin: 30px 0; /* Separación clara */
+    margin: 20px 0;
 }
 
-/* Ajuste de botones de navegación */
+/* ESTILO BASE DEL BOTÓN (Gradiente original) */
+.btn-solicitar {
+    width: 200px;
+    height: 30px;
+    border: none;
+    border-radius: 5px;
+    background: linear-gradient(89deg, #542853 0%, #954B97 100%);
+    color: white;
+    font-size: 12px;
+    font-weight: 600;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* --- SOBREESCRIBIR BOTÓN SOLO DENTRO DEL DETALLE --- */
+/* Si el botón está dentro de .tratamiento-detalle, usa el estilo "Notas" (Violeta redondo) */
+.tratamiento-detalle .btn-solicitar {
+    background: #824C91; /* Color plano */
+    border-radius: 25px; /* Muy redondeado */
+    height: auto;
+    padding: 12px 24px;
+    font-size: 14px;
+    box-shadow: none;
+    transition: background 0.3s;
+}
+
+.tratamiento-detalle .btn-solicitar:hover {
+    background-color: #6a3a75;
+}
+/* -------------------------------------------------- */
+
+
+/* Navegación */
 .botones-navegacion {
+    width: 370px;
+    margin: 30px auto;
     display: flex;
     justify-content: space-between;
-    margin: 30px auto;
-    width: 100%;
-    max-width: 370px; /* Mantiene la separación de los botones */
 }
 
-/* Ajuste del Footer al final */
+.botones-navegacion button {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border: none;
+    background: none;
+    color: #824C91;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+/* Footer */
 .Footer {
-    width: 100%;
-    margin-top: auto; 
+    width: 100% !important;
 }
