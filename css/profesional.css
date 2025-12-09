@@ -111,7 +111,7 @@ footer {
 /* --- DETALLE DE PROFESIONAL (Pantalla completa) --- */
 
 .prof-detalle {
-    width: 100%;
+    width:430px;
     padding: 20px;
     box-sizing: border-box;
 }

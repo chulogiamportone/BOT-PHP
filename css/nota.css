@@ -301,8 +301,8 @@ p {
 
 /* Contenedor principal de la nota */
 .nota-detalle {
-  width: 100%;
-  max-width: 400px;
+  width: 430px;
+  
   /* Ancho máximo similar al diseño original (372px) */
   margin: 0 auto;
   /* Centrado en pantalla */

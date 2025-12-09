@@ -53,6 +53,7 @@ document.addEventListener("htmlIncluded", () => {
                     section.scrollIntoView({ behavior: "smooth" });
 
                 } else {
+                    window.location.href = targetId ;
                     console.warn(`nav_bar: no se encontró sección con id="${targetId}"`);
                 }
 
