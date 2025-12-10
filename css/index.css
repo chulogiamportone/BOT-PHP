@@ -5,7 +5,9 @@ html {
     height: auto;
     background-attachment: fixed;
 }
-
+a{
+  text-decoration: none;
+}
 body {
     font-family: 'Montserrat', sans-serif;
     margin: 0;
@@ -383,6 +385,7 @@ body {
   position: absolute;
   left: 0;
   top: 2100px;
+  height: 1550px;
 }
 
 .Tratamientos {
@@ -437,7 +440,6 @@ body {
 
 #cards-container {
   width: 430px;
-  height: 1450px;
   position: relative;
   background: white;
   overflow: hidden;
@@ -721,7 +723,7 @@ body {
 }
 
 /* Responsive */
-@media (max-width: 720px) {
+@media (max-width: 1080px) {
   .blog-latest__list {
     grid-template-columns: 1fr;
   }
@@ -729,4 +731,246 @@ body {
   .card-note__media {
     height: 220px;
   }
+}
+
+/*Cards tratamnientos*/
+
+
+/* Contenedor principal para que las cards se ordenen solas (Responsive) */
+#cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; /* Espacio entre tarjetas */
+    justify-content: center; /* O flex-start si prefieres alineado a la izq */
+    position: relative;
+    padding: 20px 0;
+}
+
+/* La Tarjeta (Replica de MegadosisVitaminaC) */
+.treatment-card {
+    width: 370px;
+    height: 170px;
+    position: relative; /* O absolute si decides usar las coordenadas del JSON */
+    display: flex;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1); /* Opcional: mejora visual */
+}
+
+/* Imagen (Izquierda) */
+.t-card-image {
+    width: 185px;
+    height: 100%;
+    overflow: hidden;
+}
+
+.t-card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Contenido (Derecha) */
+.t-card-info {
+    width: 185px;
+    height: 100%;
+    background-color: #E8E5F3;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Título */
+.t-card-title {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    color: black;
+    margin: 23px 0 5px 21px; /* Top 23px, Left 21px */
+    width: 144px;
+}
+
+/* Descripción */
+.t-card-desc {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    font-size: 9px;
+    color: black;
+    margin: 0 0 0 21px;
+    width: 141px;
+    height: 88px;
+    overflow: hidden;
+}
+
+/* Botón */
+.t-card-btn {
+    width: 100%;
+    height: 34px;
+    background-color: #BAB7C2;
+    margin-top: auto; /* Empuja el botón al fondo */
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end; /* Alinea contenido a la derecha */
+    padding-right: 20px;
+    box-sizing: border-box;
+    gap: 10px;
+    text-decoration: none;
+    transition: background 0.3s;
+}
+
+.t-card-btn:hover {
+    background-color: #a3a0ac;
+}
+
+.t-card-btn span {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    color: white;
+}
+
+
+/* --- CARDS TRATAMIENTOS (Slide Effect) --- */
+
+/* --- CARDS TRATAMIENTOS (Slide Effect) --- */
+/* --- CONTENEDOR PRINCIPAL --- */
+#cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    position: relative;
+    padding: 20px 0;
+    z-index: 10;
+}
+
+/* --- LA TARJETA (BASE) --- */
+.treatment-card {
+    width: 370px;
+    height: 170px;
+    position: relative;
+    overflow: hidden; /* Mantiene todo dentro de los bordes redondeados si los tuvieras */
+    background-color: #000;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+    cursor: pointer;
+    /* No ponemos transition aquí, sino en los elementos hijos */
+}
+
+/* --- CAPA 1: IMAGEN DE FONDO --- */
+.t-card-image-bg {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1; /* Al fondo */
+}
+
+.t-card-image-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* --- CAPA 2: PANEL DE INFORMACIÓN --- */
+.t-card-info {
+    width: 185px; /* Ocupa la mitad exacta */
+    height: 100%;
+    background-color: #E8E5F3;
+
+    position: absolute;
+    top: 0;
+    right: 0; /* Por defecto empieza a la DERECHA */
+    z-index: 10; /* Encima de la imagen */
+
+    display: flex;
+    flex-direction: column;
+
+    /* LA MAGIA: Suavidad del movimiento */
+    transition: transform 0.4s ease-in-out;
+}
+
+/* =========================================================
+   LÓGICA DE ANIMACIÓN (NORMAL VS INVERTIDA)
+   ========================================================= */
+
+/* CASO 1: CARDS IMPARES (Comportamiento Normal) */
+/* Al hacer hover, el panel se mueve a la izquierda (-100% de su ancho) */
+.treatment-card:hover .t-card-info {
+    transform: translateX(-100%);
+}
+
+/* CASO 2: CARDS PARES (Comportamiento Invertido .reverse-hover) */
+/* 2.1 Estado Inicial: El panel YA está a la izquierda por defecto */
+.treatment-card.reverse-hover .t-card-info {
+    transform: translateX(-100%);
+}
+
+/* 2.2 Estado Hover: El panel regresa a su posición original (Derecha/0) */
+/* "Al pasar el mouse sobre la card invertida, quita la transformación" */
+.treatment-card.reverse-hover:hover .t-card-info {
+    transform: translateX(0);
+}
+
+
+/* --- ESTILOS INTERNOS (Textos y Botones) --- */
+.t-card-title {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    color: black;
+    margin: 23px 0 5px 21px;
+    width: 144px;
+    flex-shrink: 0;
+}
+
+.t-card-desc {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    font-size: 9px;
+    color: black;
+    margin: 0 0 10px 21px;
+    width: 144px;
+    line-height: 1.4;
+    flex-grow: 1;
+    overflow: hidden;
+}
+
+/* BOTÓN */
+.t-card-btn {
+    width: 100%;
+    height: 34px;
+    background-color: #BAB7C2;
+    margin-top: auto;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 20px;
+    box-sizing: border-box;
+    gap: 10px;
+    transition: background 0.2s;
+}
+
+/* Hover específico del botón (cambio de color) */
+.treatment-card:hover .t-card-btn {
+    background-color: #a3a0ac;
+}
+
+.t-card-btn span {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    color: white;
+}
+
+
+
+
+
+a:active {
+  /* Asegúrate de reemplazar 'tu_color_normal' con el color que 
+    tienen tus enlaces normalmente (ej: #333333).
+  */
+  color: tu_color_normal !important;
 }

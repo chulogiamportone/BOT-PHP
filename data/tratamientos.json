@@ -1,44 +1,90 @@
 [
   {
     "id": 1,
-    "title": "Megadosis Vitamina C",
-    "description": "Refuerzo radical del sistema inmune. Altas dosis de Vitamina C que combate la inflamación crónica y promover los procesos de regeneración celular.",
-    "image": "images/Home/Tratamientos/constalacionesfamiliares.png",
-    "position": { "left": 30, "top": 0 }
+    "title": "Ozonoterapia",
+    "description": "El poder del oxígeno para regenerar. Las aplicaciones de ozono médico propician la oxigenación celular, estimulan las defensas y desinflaman tejidos.",
+    "image": "images/Home/Tratamientos/Ozonoterapia.png",
+    "position": {
+      "left": 30,
+      "top": 0
+    },
+    "link": "/blog?id=0004"
   },
   {
     "id": 2,
-    "title": "Otro Tratamiento",
-    "description": "Descripción del tratamiento...",
-    "image": "images/Home/Tratamientos/limpiezadeorganos.png",
-    "position": { "left": 30, "top": 170 }
+    "title": "Terapia de quelación de metales pesados",
+    "description": "Ayuda a eliminar toxinas de forma segura, restaurando las energías y protegiendo los órganos clave como hígado, riñones y cerebro.",
+    "image": "images/Home/Tratamientos/terapiaquelacion.png",
+    "position": {
+      "left": 30,
+      "top": 170
+    },
+    "link": "/blog?id=0006"
   },
   {
     "id": 3,
-    "title": "Otro Tratamiento",
-    "description": "Descripción del tratamiento...",
-    "image": "images/Home/Tratamientos/Medicacionantroposofica.png",
-    "position": { "left": 30, "top": 340}
+    "title": "Limpieza de órganos",
+    "description": "Detox profundo y revitalización con sueros especialmente formulados. Fortalecimiento del hígado, riñones e intestinos, pilares del equilibrio interno.",
+    "image": "images/Home/Tratamientos/limpiezadeorganos.png",
+    "position": {
+      "left": 30,
+      "top": 340
+    },
+    "link": "/blog?id=0002"
   },
   {
     "id": 4,
-    "title": "Otro Tratamiento",
-    "description": "Descripción del tratamiento...",
-    "image": "images/Home/Tratamientos/MegadosisVitaminaC.png",
-    "position": { "left": 30, "top": 510 }
+    "title": "Nutrición biológica",
+    "description": "Guía para redescubrir la alimentación ancestral como medicina. Planes personalizados basados en alimentos naturales, ajustados a cada biotipo.",
+    "image": "images/Home/Tratamientos/Nutricionbiologica.png",
+    "position": {
+      "left": 30,
+      "top": 510
+    },
+    "link": "/blog?id=0003"
   },
   {
     "id": 5,
-    "title": "Otro Tratamiento",
-    "description": "Descripción del tratamiento...",
-    "image": "images/Home/Tratamientos/Nutricionbiologica.png",
-    "position": { "left": 30, "top": 680 }
+    "title": "Constelaciones familiares",
+    "description": "Detox profundo y revitalización con sueros especialmente formulados. Fortalecimiento del hígado, riñones e intestinos, pilares del equilibrio interno.",
+    "image": "images/Home/Tratamientos/constalacionesfamiliares.png",
+    "position": {
+      "left": 30,
+      "top": 510
+    },
+    "link": "/blog?id=0005"
   },
   {
     "id": 6,
-    "title": "Otro Tratamiento",
-    "description": "Descripción del tratamiento...",
-    "image": "images/Home/Tratamientos/terapiaquelacion.png",
-    "position": { "left": 30, "top": 850 }
+    "title": "Terapia transpersonal",
+    "description": "Expandir la consciencia con un abordaje psicológico, espiritual y de desarrollo interior, para atravesar crisis vitales y conectar con el propósito que nos motiva.",
+    "image": "images/Home/Tratamientos/Terapiatranspersonal.png",
+    "position": {
+      "left": 30,
+      "top": 680
+    },
+    "link": "/blog?id=0007"
+  },
+  {
+    "id": 7,
+    "title": "Megadosis Vitamina C",
+    "description": "Refuerzo radical del sistema inmune. Altas dosis de Vitamina C que combate la inflamación crónica y promover los procesos de regeneración celular.",
+    "image": "images/Home/Tratamientos/MegadosisVitaminaC.png",
+    "position": {
+      "left": 30,
+      "top": 850
+    },
+    "link": "/blog?id=0001"
+  },
+  {
+    "id": 8,
+    "title": "Medicación antroposófica",
+    "description": "Guía para redescubrir la alimentación ancestral como medicina. Planes personalizados basados en alimentos naturales, ajustados a cada biotipo.",
+    "image": "images/Home/Tratamientos/Medicacionantroposofica.png",
+    "position": {
+      "left": 30,
+      "top": 1020
+    },
+    "link": "/blog?id=0008"
   }
 ]

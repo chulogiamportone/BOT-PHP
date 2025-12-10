@@ -7,7 +7,7 @@ function ajustarEscala() {
 
   // 2. Límite máximo (donde quieres que deje de crecer)
   // Puedes cambiar 1080 por otro número si quieres que pare antes o después
-  const anchoMaximo = 720;
+  const anchoMaximo = 1080;
 
   // 3. Obtenemos el ancho real de la ventana
   const anchoVentana = window.innerWidth;

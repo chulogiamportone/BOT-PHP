@@ -126,10 +126,7 @@
   cursor: pointer;
 }
 
-/* Por si algo tiene pointer-events y tapa el botón */
-.RectangleNavBar, .MarcaMicael {
-  pointer-events: none;
-}
+
 
 /* Convertimos los textos en botones */
 .menu_button {

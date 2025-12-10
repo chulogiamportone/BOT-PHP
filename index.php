@@ -95,7 +95,7 @@ $vistas = [
     'login'             => ['archivo' => 'login.html',              'protegido' => false],
     'notas'             => ['archivo' => 'nota.html',               'protegido' => false],
     'profesionales'     => ['archivo' => 'profesional.html',        'protegido' => false],
-    'tratamientos'      => ['archivo' => 'tratamiento.html',        'protegido' => false],
+    'tratamientos'      => ['archivo' => 'tratamiento.html',        'protegido' => true],
     'crear-nota'        => ['archivo' => 'formulario_notas.html',       'protegido' => false],
     'crear-profesional' => ['archivo' => 'formulario_profesional.html', 'protegido' => false],
     'crear-tratamiento' => ['archivo' => 'formulario_tratamiento.html', 'protegido' => false],
