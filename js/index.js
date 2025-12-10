@@ -56,7 +56,7 @@ function createCard(data) {
     // 2. Fallback: Generar slug automático
     else {
       const slug = data.title.toLowerCase().trim().replace(/\s+/g, '-');
-      window.location.href = `/tratamientos/${slug}.html`;
+      window.location.href = `/blog?id=`+data.id;
     }
   });
 

@@ -1,0 +1,143 @@
+/* --- ESTILOS DEL CONTENEDOR DE LA SECCIÓN --- */
+#seccion-destacados {
+    width: 100%;
+    max-width: 430px; /* Mantengo tu ancho máximo de diseño */
+    margin: 0 auto;   /* Centrado horizontal */
+    padding: 20px 0;
+    background: transparent; /* O white, según prefieras */
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.destacados-titulo h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+    text-align: center;
+    margin-bottom: 20px;
+    color: black;
+}
+
+#cards-destacados-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    width: 100%;
+    position: relative;
+    z-index: 10;
+}
+
+/* =========================================================
+   ESTILOS DE LAS CARDS (Copiados EXACTAMENTE de tu código)
+   ========================================================= */
+
+/* --- LA TARJETA (BASE) --- */
+.treatment-card {
+    width: 370px;
+    height: 170px;
+    position: relative;
+    overflow: hidden;
+    background-color: #000; /* Fondo negro por si tarda en cargar img */
+    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+    cursor: pointer;
+    margin-bottom: 10px; /* Un pequeño margen extra por seguridad */
+}
+
+/* --- CAPA 1: IMAGEN DE FONDO --- */
+.t-card-image-bg {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1; 
+}
+
+.t-card-image-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* --- CAPA 2: PANEL DE INFORMACIÓN --- */
+.t-card-info {
+    width: 185px; /* Mitad exacta */
+    height: 100%;
+    background-color: #E8E5F3;
+    position: absolute;
+    top: 0;
+    right: 0; /* Empieza a la DERECHA */
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.4s ease-in-out; /* Tu animación */
+}
+
+/* --- LÓGICA DE ANIMACIÓN (NORMAL VS INVERTIDA) --- */
+
+/* CASO 1: CARDS IMPARES (Normal) */
+.treatment-card:hover .t-card-info {
+    transform: translateX(-100%);
+}
+
+/* CASO 2: CARDS PARES (Invertida) */
+.treatment-card.reverse-hover .t-card-info {
+    transform: translateX(-100%); /* Inicialmente a la izquierda */
+}
+
+.treatment-card.reverse-hover:hover .t-card-info {
+    transform: translateX(0); /* Al hacer hover vuelve a la derecha */
+}
+
+/* --- ESTILOS INTERNOS --- */
+.t-card-title {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    color: black;
+    margin: 23px 0 5px 21px;
+    width: 144px;
+    flex-shrink: 0;
+}
+
+.t-card-desc {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    font-size: 9px;
+    color: black;
+    margin: 0 0 10px 21px;
+    width: 144px;
+    line-height: 1.4;
+    flex-grow: 1;
+    overflow: hidden;
+}
+
+/* BOTÓN */
+.t-card-btn {
+    width: 100%;
+    height: 34px;
+    background-color: #BAB7C2;
+    margin-top: auto;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 20px;
+    box-sizing: border-box;
+    gap: 10px;
+    transition: background 0.2s;
+}
+
+.treatment-card:hover .t-card-btn {
+    background-color: #a3a0ac;
+}
+
+.t-card-btn span {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    color: white;
+}

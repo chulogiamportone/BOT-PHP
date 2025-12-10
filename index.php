@@ -93,7 +93,7 @@ $baseVistas = __DIR__ . '/vistas/';
 $vistas = [
     ''                  => ['archivo' => 'index.html',              'protegido' => false],
     'login'             => ['archivo' => 'login.html',              'protegido' => false],
-    'notas'             => ['archivo' => 'nota.html',               'protegido' => false],
+    'blog'             => ['archivo' => 'nota.html',               'protegido' => false],
     'profesionales'     => ['archivo' => 'profesional.html',        'protegido' => false],
     'tratamientos'      => ['archivo' => 'tratamiento.html',        'protegido' => true],
     'crear-nota'        => ['archivo' => 'formulario_notas.html',       'protegido' => false],
