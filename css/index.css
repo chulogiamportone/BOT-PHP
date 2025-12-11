@@ -974,3 +974,20 @@ a:active {
   */
   color: tu_color_normal !important;
 }
+
+/* Elimina alturas fijas que rompen el flujo */
+#Domicilio_Index{
+    height: auto !important;
+}
+
+/* Ajustar contenedores internos que estaban absolutos */
+.Domicilio {
+    position: relative !important;
+}
+
+/* Ajusta contenedor Domicilio para que se vea correctamente */
+#Domicilio_Index {
+    padding-top: 400px;
+    padding-bottom: 40px;
+}
+
