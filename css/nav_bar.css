@@ -1,134 +1,127 @@
-#nav{
-    width: 430px; 
-    height: 151.62px; 
-    left: 0px; 
-    top: 0px; 
-    position: absolute; 
-}
+/* =========================================
+   1. BARRA DE NAVEGACIÓN (NAVBAR)
+   ========================================= */
+.NavBar {
+    width: 430px;
+    height: 150px; /* Altura Inicial */
 
-
-/*nav_bar.css*/
-.NavBar{
-    width: 430px; 
-    height: 150px; 
-    left: 0px; 
-    top: 0px; 
-    position: absolute; 
+    top: 0px;
+    position: fixed; /* FIJO para que baje con la pantalla */
+    z-index: 10002; /* Siempre encima del menú y contenido */
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    transition: all 0.3s ease; /* Animación suave */
 }
 
-.RectangleNavBar{
-    width: 430px; 
-    height: 150px; 
-    left: 0px; 
-    top: 0px; 
-    position: absolute; 
+/* El fondo degradado se adapta al tamaño del padre */
+.RectangleNavBar {
+    width: 100%;
+    height: 100%; 
+    top: 0px;
+    position: absolute;
     background: linear-gradient(89deg, #542853 0%, #542853 17%, #954B97 98%, #954B97 100%);
 }
 
-.MarcaMicael{
-    width: 269.15px; 
-    height: 112.07px; 
-    left: 21px; 
-    top: 19.77px; 
-    position: absolute; 
+/* Contenedor del Logo */
+.MarcaMicael {
+    width: 269.15px;
+    height: 112.07px;
+    left: 21px;
+    top: 19.77px;
+    position: absolute;
     overflow: hidden;
+    transition: all 0.3s ease;
 }
 
-.Menu{
-    left: 336.97px; 
-    top: 67.15px; 
+/* Imagen del Logo */
+.MicaelMarca1 {
+    width: 300px;
+    height: auto;
+    left: 2.80px;
+    top: 2.89px;
+    position: absolute;
+    transition: all 0.3s ease;
+}
+
+/* Botón Hamburguesa */
+.Menu {
+    left: 336.97px;
+    top: 67.15px;
     position: absolute;
     width: 50px;
+    cursor: pointer;
+    z-index: 9999;
+    transition: all 0.3s ease;
 }
 
-.MicaelMarca1{
-    width: 263.55px; 
-    height: 106.30px; 
-    left: 2.80px; 
-    top: 2.89px; 
-    position: absolute;
+/* =========================================
+   2. ESTADO "SCROLLED" (Cuando bajamos)
+   ========================================= */
+
+/* La barra se achica a 90px */
+.NavBar.scrolled {
+    height: 70px; 
 }
 
-/*menu.css*/
+/* El logo se hace más pequeño y sube */
+.NavBar.scrolled .MarcaMicael {
+    width: 180px;
+    height: 70px;
+    top: 10px;
+}
 
-.Menu2{
-    width: 430px; 
-    height: 235px; 
-    left: 0px; 
+.NavBar.scrolled .MicaelMarca1 {
+    width: 150px;
+    top: 0px;
+}
+
+/* El botón de menú sube para centrarse */
+.NavBar.scrolled .Menu {
+    top: 35px;
+}
+
+/* =========================================
+   3. MENÚ DESPLEGABLE (MENU2)
+   ========================================= */
+.Menu2 {
+    width: 430px;
+    height: 200px;
     
-    position: absolute; 
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); 
+    /* POSICIONAMIENTO FIJO CLAVE */
+    position: fixed; 
+    top: 150px; /* Empieza pegado a la barra original (150px) */
+    
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     overflow: hidden;
     background: rgba(52, 52, 52, 0.9);
     backdrop-filter: blur(4px);
-    transition: all 0.3s ease;
+    
+    /* Transiciones */
+    transition: top 0.3s ease, opacity 0.3s ease;
+    
     opacity: 0;
     pointer-events: none;
-    z-index: 10000;
-
+    z-index: 10000; /* Debajo de la NavBar */
 }
 
-.Rectangle10{
-    width: 430px; 
-    height: 234.84px; 
-    left: 0px; 
-    top: 0.08px; 
-    position: absolute; 
+/* Fondo del menú */
+.Rectangle10 {
+    width: 430px;
+    height: 200px;
+    left: 0px;
+    top: 0.08px;
+    position: absolute;
     background: rgba(52.72, 52.72, 52.72, 0.90);
     background-blend-mode: multiply;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
-.menu_item{
-    left: 43px; 
-    position: absolute; 
-    justify-content: center; 
-    display: flex; 
-    flex-direction: column; 
-    color: white; 
-    font-size: 20px; 
-    font-family: Montserrat; 
-    font-weight: 600; 
-    word-wrap: break-word;
+/* Items del menú */
+.menu_item {
+    left: 43px;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
 }
 
-/*                           */
-
-
-/* =========================
-   MENU DESPLEGABLE
-   ========================= */
-
-/* Menú visible */
-.Menu2.show {
-    width: 430px; 
-    height: 235px; 
-    left: 0px; 
-   
-    position: absolute; 
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); 
-    overflow: hidden;
-    background: rgba(52, 52, 52, 0.9);
-    backdrop-filter: blur(4px);
-    transition: all 0.3s ease;
-    opacity: 0;
-    pointer-events: none;
-    z-index: 10000;
-    opacity: 1 !important;
-    pointer-events: auto !important;
-    
-}
-/* Hacer que el botón sea clickeable */
-#menuButton {
-  position: relative;
-  z-index: 10001;
-  cursor: pointer;
-}
-
-
-
-/* Convertimos los textos en botones */
 .menu_button {
     background: none;
     border: none;
@@ -145,4 +138,23 @@
     color: #D5A6E6;
 }
 
+/* Clase para mostrar el menú */
+.Menu2.show {
+    opacity: 1 !important;
+    pointer-events: auto !important;
+}
 
+/* =========================================
+   4. AJUSTE DINÁMICO DEL MENÚ
+   ========================================= */
+/* Cuando el JS detecta scroll, añade esta clase al body.
+   El menú sube a 90px para pegarse a la nueva altura de la barra. */
+body.scrolled-mode .Menu2 {
+    top: 70px; 
+}
+
+
+.space{
+    height: 150px;
+    background:linear-gradient(89deg, #542853 0%, #542853 17%, #954B97 98%, #954B97 100%);
+}

@@ -64,3 +64,43 @@
     fill: #4C2C53 !important;
  
 }
+
+.slider-top-btn {
+    /* Posicionamiento */
+    position: absolute;
+    top: 83%; /* Distancia desde el borde superior */
+    left: 50%;
+    transform: translateX(-50%); /* Truco para centrarlo horizontalmente exacto */
+    z-index: 20; /* Para que aparezca por encima de las fotos */
+
+    /* Estilos visuales (Copiados de tu identidad de marca) */
+    background: linear-gradient(180deg, #824C91 0%, #4C2C53 100%);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+    
+    /* Tipografía y tamaño */
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    color: white;
+    text-decoration: none; /* Quita el subrayado del link */
+    text-transform: uppercase;
+    
+    /* Espaciado interno */
+    padding: 10px 25px; /* Ajusta esto si lo quieres más grande o chico */
+    
+    /* Animación suave */
+    transition: opacity 0.3s, transform 0.1s;
+}
+
+/* Efecto al pasar el mouse (Hover) */
+.slider-top-btn:hover {
+    opacity: 0.9;
+    cursor: pointer;
+}
+
+/* Efecto al hacer click (Active) */
+.slider-top-btn:active {
+    transform: translateX(-50%) translateY(2px); /* Mantiene el centrado y baja un poco */
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+}

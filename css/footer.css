@@ -24,27 +24,23 @@
 }
 
 .Redes{
-    width: 76px; 
+    width: 200px; 
     height: 20px; 
-    left: 177px; 
     top: 750px; 
     position: absolute; 
     overflow: hidden;
+    display: flex;
+    justify-content: space-around;
+    justify-self: center;
 }
 .Youtube{
-    left: 24.50px; 
     top: 0px; 
-    position: absolute;
 }
-.Instagram{
-    left: 55px; 
+.Instagram{ 
     top: 0px; 
-    position: absolute;
 }
 .Facebook{
-    left: 2px; 
     top: 0px; 
-    position: absolute;
 }
 
 

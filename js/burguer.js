@@ -1,83 +1,100 @@
-// nav_bar.js (modificado para scroll correcto)
-
 document.addEventListener("htmlIncluded", () => {
-    if (document.querySelector("#menuContent")) {
-        initMenu();
-    }
+	initBurguerMenu();
 });
 
-(function () {
-    function initMenu() {
-        const menuButton = document.getElementById("menuButton");
-        const menuContent = document.getElementById("menuContent");
-        const menuButtons = document.querySelectorAll(".menu_button");
+// Fallback por si el evento htmlIncluded ya pasó o no se dispara
+if (document.readyState === "complete" || document.readyState === "interactive") {
+	setTimeout(initBurguerMenu, 100);
+} else {
+	document.addEventListener("DOMContentLoaded", () => {
+		setTimeout(initBurguerMenu, 100);
+	});
+}
 
-        if (!menuButton || !menuContent) {
-            console.error("nav_bar: no se encontró menuButton o menuContent");
-            return;
-        }
+function initBurguerMenu() {
+	const menuButton = document.getElementById("menuButton");
+	const menuContent = document.getElementById("menuContent");
+	const navBar = document.querySelector(".NavBar");
+	const menuLinks = document.querySelectorAll(".menu_button");
 
-        // Toggle menú
-        menuButton.addEventListener("click", (e) => {
-            e.stopPropagation();
-            menuContent.classList.toggle("show");
-        });
+	// 1. Validación de seguridad: Si no existen los elementos o YA se iniciaron, frenamos.
+	if (!menuButton || !menuContent || menuButton.dataset.init === "true") {
+		return;
+	}
 
-        // Evitar cerrar al hacer click dentro del menú
-        menuContent.addEventListener("click", (e) => e.stopPropagation());
+	// Marcamos el botón como "iniciado" para evitar duplicar la lógica
+	menuButton.dataset.init = "true";
 
-        // Cerrar menú al hacer click fuera
-        document.addEventListener("click", () => {
-            if (menuContent.classList.contains("show")) {
-                menuContent.classList.remove("show");
-            }
-        });
+	// ----------------------------------------------------
+	// LÓGICA 1: Scroll de la Barra (Color de fondo)
+	// ----------------------------------------------------
+	window.addEventListener("scroll", () => {
+		if (window.scrollY > 100) {
+			navBar.classList.add("scrolled");
+			document.body.classList.add("scrolled-mode");
+		} else {
+			navBar.classList.remove("scrolled");
+			document.body.classList.remove("scrolled-mode");
+		}
+	});
 
-        // Cerrar con ESC
-        document.addEventListener("keydown", (e) => {
-            if (e.key === "Escape") menuContent.classList.remove("show");
-        });
+	// ----------------------------------------------------
+	// LÓGICA 2: Abrir / Cerrar Menú (Fix Móvil)
+	// ----------------------------------------------------
+	
+	// Usamos 'onclick' directo para evitar acumulación de listeners
+	menuButton.onclick = (e) => {
+		// Detenemos la propagación para que el document no reciba el click
+		e.stopPropagation();
+		e.preventDefault();
+		menuContent.classList.toggle("show");
+	};
 
-        // Manejo de botones internos
-        menuButtons.forEach(btn => {
-            btn.addEventListener("click", (e) => {
-                e.preventDefault(); // Evita cualquier comportamiento por href
-                const targetId = btn.getAttribute("data-view") || btn.getAttribute("href");
+	// Evitar que clicks DENTRO del menú lo cierren (excepto los botones)
+	menuContent.onclick = (e) => {
+		e.stopPropagation();
+	};
 
-                if (!targetId) return;
+	// Click en cualquier parte del documento cierra el menú
+	document.addEventListener("click", (e) => {
+		// Solo cerramos si está abierto y el click no fue en el botón
+		if (menuContent.classList.contains("show")) {
+			menuContent.classList.remove("show");
+		}
+	});
 
-                // Buscamos la sección por ID (más confiable que name)
-                const section = document.getElementById(targetId);
+	// Cerrar con tecla ESC
+	document.addEventListener("keydown", (e) => {
+		if (e.key === "Escape" && menuContent.classList.contains("show")) {
+			menuContent.classList.remove("show");
+		}
+	});
 
-                if (section) {
-                    section.scrollIntoView({ behavior: "smooth" });
+	// ----------------------------------------------------
+	// LÓGICA 3: Navegación (Links del menú)
+	// ----------------------------------------------------
+	menuLinks.forEach((btn) => {
+		btn.onclick = (e) => {
+			// 1. Cerramos el menú inmediatamente
+			menuContent.classList.remove("show");
 
-                } else {
-                    window.location.href = targetId ;
-                    console.warn(`nav_bar: no se encontró sección con id="${targetId}"`);
-                }
+			// 2. Obtenemos el destino
+			const targetId = btn.getAttribute("data-view") || btn.getAttribute("href");
+			if (!targetId) return;
 
-                // Cerrar menú
-                menuContent.classList.remove("show");
-            });
-        });
-    }
+			// 3. Verificamos si es un ancla interna (#) o navegación
+			const section = document.getElementById(targetId);
 
-
-    console.log(document.querySelectorAll('#Tratamientos_Index').length);
-    console.log(document.getElementById('Tratamientos_Index'))
-    const s = document.getElementById('Tratamientos_Index');
-    s && console.log(s.getBoundingClientRect().top, window.pageYOffset);
-    const h = document.querySelector('header');
-    h && console.log(getComputedStyle(h).position, h.offsetHeight);
-
-
-
-    // Inicialización con htmlIncluded
-    document.addEventListener("htmlIncluded", initMenu);
-
-    // Fallback por si include_html ya cargó antes
-    document.addEventListener("DOMContentLoaded", () => {
-        setTimeout(initMenu, 50);
-    });
-})();
+			if (section) {
+				e.preventDefault(); // Evitamos recarga si es en la misma página
+				section.scrollIntoView({ behavior: "smooth" });
+			} else {
+				// Dejamos que el href funcione normal para ir a otra página
+				// Si usas data-view y no es href, forzamos la redirección:
+				if (!btn.getAttribute("href")) {
+					window.location.href = targetId;
+				}
+			}
+		};
+	});
+}

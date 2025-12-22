@@ -15,7 +15,7 @@
     <!-- AOS CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" />
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="/images/favicon/puntogis-12.ico">
+    <link rel="icon" href="/images/favicon.png">
 
     <link rel="stylesheet" href="/css/nav_bar.css">
 
@@ -27,7 +27,7 @@
         <div class="NavBar">
             <div class="RectangleNavBar"></div>
             <a href="/" class="MarcaMicael">
-                
+
                 <img class="MicaelMarca1" src="/images/navbar/Micael_marca.png" alt="Micael marca 1">
             </a>
             <div class="Menu" id="menuButton">
@@ -39,24 +39,23 @@
             </div>
         </div>
     </section>
+    <div class="space">
+
+    </div>
     <section name="Menu_section">
         <div class="Menu2" id="menuContent">
-            <div data-layer="Rectangle 10" class="Rectangle10">
-            </div>
+
             <div class="menu_item" style="top: 16.06px;">
-                <a type="button" class="menu_button" href="tratamientos" >Tratamientos</a>
+                <a type="button" class="menu_button" id="menu_button" data-view="/#tratamientos">Tratamientos</a>
             </div>
             <div class="menu_item" style="top: 60.69px;">
-                <a type="button" class="menu_button" href="profesionales" >Profesionales</a>
+                <a type="button" class="menu_button" data-view="/profesionales" href="profesionales">Profesionales</a>
             </div>
             <div class="menu_item" style="top: 105.32px;">
-                <button type="button" class="menu_button" data-view="Domicilio_Index">Domicilio</button>
+                <a type="button" class="menu_button" href="/#Contacto_Index">Contacto</a>
             </div>
             <div class="menu_item" style="top: 149.95px;">
-                <button type="button" class="menu_button" data-view="Contacto_Index">Contacto</button>
-            </div>
-            <div class="menu_item" style="top: 194.58px;">
-                <button type="button" class="menu_button" data-view="notas">Blog</button>
+                <a type="button" class="menu_button" data-view="" href="blog">Temas Micael</a>
             </div>
         </div>
 
@@ -70,27 +69,38 @@
 
 <style>
     .btn-flotante-whatsapp {
-        position: fixed; /* Mantiene el botón fijo al hacer scroll */
-        bottom: 50px;    /* Distancia desde abajo */
-        right: 20px;     /* Distancia desde la derecha */
-        width: 60px;     /* Ancho del botón */
-        height: 60px;    /* Alto del botón */
-        background-color: #25d366; /* Color verde oficial de WhatsApp */
+        position: fixed;
+        /* Mantiene el botón fijo al hacer scroll */
+        bottom: 50px;
+        /* Distancia desde abajo */
+        right: 20px;
+        /* Distancia desde la derecha */
+        width: 60px;
+        /* Ancho del botón */
+        height: 60px;
+        /* Alto del botón */
+        background-color: #25d366;
+        /* Color verde oficial de WhatsApp */
         color: white;
-        border-radius: 50%; /* Lo hace redondo */
+        border-radius: 50%;
+        /* Lo hace redondo */
         text-align: center;
-        box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2); /* Sombra suave para efecto flotante */
-        z-index: 9999; /* Asegura que esté por encima de todo */
+        box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+        /* Sombra suave para efecto flotante */
+        z-index: 9999;
+        /* Asegura que esté por encima de todo */
         display: flex;
         align-items: center;
         justify-content: center;
         text-decoration: none;
-        transition: transform 0.3s ease; /* Animación suave al pasar el mouse */
+        transition: transform 0.3s ease;
+        /* Animación suave al pasar el mouse */
     }
 
     /* Estilo para la imagen dentro del botón */
     .btn-flotante-whatsapp img {
-        width: 35px; /* Tamaño del icono dentro del círculo */
+        width: 35px;
+        /* Tamaño del icono dentro del círculo */
         height: 35px;
         object-fit: contain;
     }
@@ -103,10 +113,35 @@
 </style>
 <!-- AOS Animation Library -->
 <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-<script src="/js/burguer.js"></script>
 <script>
     document.addEventListener("DOMContentLoaded", () => {
         console.log("✅ DOM listo, JS cargado");
+    });
+</script>
+<script>
+    document.querySelectorAll('a[href^="/#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            // 1. Detectamos si ya estamos en la página de inicio
+            if (window.location.pathname === '/' || window.location.pathname === '/index.php') {
+
+                // 2. Extraemos el ID del destino (ej: #Contacto_Index)
+                const targetId = this.getAttribute('href').substring(1); // Quita la "/" inicial
+                const targetElement = document.querySelector(targetId);
+
+                if (targetElement) {
+                    e.preventDefault(); // Evita que la página parpadee o recargue
+
+                    // 3. Hacemos scroll suave manual
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+
+                    // Opcional: Actualiza la URL sin recargar
+                    history.pushState(null, null, targetId);
+                }
+            }
+            // Si NO estamos en el index, dejamos que el enlace funcione normal y nos lleve allí.
+        });
     });
 </script>
 
