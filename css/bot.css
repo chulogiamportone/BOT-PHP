@@ -1,68 +1,58 @@
 /* =========================================
-   ESTILOS GENERALES DEL CHAT (bot.css)
+   1. RESET BÁSICO (CRUCIAL)
    ========================================= */
+/* Esto evita que el padding sume tamaño y deforme la caja */
+#floating-chat-container,
+#floating-chat-container * {
+    box-sizing: border-box;
+}
 
-/* Nota: Eliminamos los estilos de 'body' para no romper tu página principal */
-
-.chat-container {
-    background: white;
+/* =========================================
+   2. CONTENEDOR PADRE FLOTANTE (El Marco)
+   ========================================= */
+#floating-chat-container {
+    /* Posición fija en la pantalla */
+    position: fixed;
+    z-index: 10000000 !important; /* Muy alto para estar encima de todo */
+    max-width: 430px !important;
+    /* TAMAÑO EN PC (Por defecto) */
+    /* Aquí definimos el tamaño del "hueco". Los hijos se adaptarán a esto. */
+    width: 350px; 
+    height: 500px;
+    bottom: 20px;
+    right: 20px;
+    
+    /* Configuración para contener a los hijos */
     display: flex;
     flex-direction: column;
-    overflow: hidden;
-    /* Sombras suaves para dar profundidad */
-    box-shadow: 0 5px 25px rgba(0,0,0,0.2); 
+    box-shadow: 0 5px 25px rgba(0,0,0,0.2);
+    border-radius: 15px;
+    overflow: hidden; /* Recorta las esquinas de los hijos */
+    background: white;
 }
 
 /* =========================================
-   VERSION ESCRITORIO (Estilo Facebook)
+   3. EL CUERPO DEL CHAT (Se adapta al padre)
    ========================================= */
-/* Por defecto, asumimos pantalla grande */
 .chat-container {
-    width: 380px;      /* Ancho fijo cómodo */
-    height: 500px;     /* Altura fija */
-    border-radius: 15px 15px 0 0; /* Bordes redondeados arriba */
-    /* La posición la controla el div contenedor en el HTML, 
-       pero aquí aseguramos que llene ese espacio */
-}
-
-/* =========================================
-   VERSION MÓVIL (Pantalla Completa)
-   ========================================= */
-@media (max-width: 768px) {
-    /* Cuando la pantalla sea menor a 768px (Tablets y Celulares) */
+    /* IMPORTANTE: Ocupa todo el espacio del #floating-chat-container */
+    width: 100%;
+    height: 100%;
     
-    /* Forzamos al contenedor padre (el que pusimos en el HTML) a ocupar todo */
-    #floating-chat-container {
-        bottom: 0 !important;
-        right: 0 !important;
-        width: 100% !important;
-        height: 100% !important;
-        max-width: 100% !important;
-        border-radius: 0 !important;
-        z-index: 99999 !important; /* Por encima de todo, incluso del menú */
-    }
-
-    .chat-container {
-        width: 100%;
-        height: 100%;
-        border-radius: 0; /* Sin bordes redondeados en móvil */
-    }
-
-    .chat-header {
-        padding: 20px 15px; /* Cabecera un poco más grande para tocar fácil con el dedo */
-    }
-
-    .chat-input-area {
-        padding-bottom: 20px; /* Espacio extra abajo para teclados móviles */
-    }
+    display: flex;
+    flex-direction: column; /* Apila header, mensajes e input */
+    background: white;
+    margin: 0; /* Sin márgenes que empujen */
 }
 
 /* =========================================
-   ELEMENTOS INTERNOS
+   4. DISTRIBUCIÓN VERTICAL (Los Hijos)
    ========================================= */
 
+/* A. Cabecera (Tamaño fijo según su contenido + padding) */
 .chat-header {
-    background: linear-gradient(135deg, #007bff, #0056b3); /* Degradado moderno */
+    flex-shrink: 0; /* No permitimos que se achique */
+    background: linear-gradient(135deg, #007bff, #0056b3);
     color: white;
     padding: 15px;
     text-align: center;
@@ -73,31 +63,32 @@
     align-items: center;
 }
 
-/* Ajuste para el botón de cerrar X */
 .chat-header .close-chat-btn {
     font-size: 24px;
     cursor: pointer;
-    padding: 0 10px;
+    line-height: 1;
 }
 
+/* B. Caja de Mensajes (Ocupa TODO el espacio sobrante) */
 .chat-box {
-    flex: 1;
+    flex-grow: 1;       /* Crece para ocupar el espacio libre */
+    width: 100%;        /* Ancho total */
+    overflow-y: auto;   /* Scroll si hay muchos mensajes */
     padding: 15px;
-    overflow-y: auto;
-    background: #f4f6f9; /* Gris muy suave */
+    background: #f4f6f9;
     display: flex;
     flex-direction: column;
     gap: 12px;
 }
 
-/* Estilos de los mensajes */
+/* Estilos de burbujas */
 .message {
-    max-width: 80%;
+    max-width: 85%;
     padding: 10px 15px;
     border-radius: 18px;
-    font-size: 15px;
-    line-height: 1.5;
-    word-wrap: break-word;
+    font-size: 14px;
+    line-height: 1.4;
+    word-wrap: break-word; /* Evita desborde de texto */
     font-family: 'Segoe UI', sans-serif;
 }
 
@@ -105,41 +96,47 @@
     background: #e9ecef;
     color: #333;
     align-self: flex-start;
-    border-bottom-left-radius: 4px; /* Efecto "burbuja de chat" */
+    border-bottom-left-radius: 2px;
 }
 
 .user-message {
     background: #007bff;
     color: white;
     align-self: flex-end;
-    border-bottom-right-radius: 4px;
+    border-bottom-right-radius: 2px;
+    margin-right: 2px; /* Pequeño ajuste visual */
 }
 
-/* Área de input */
+/* C. Área de Input (Tamaño fijo abajo) */
 .chat-input-area {
-    padding: 15px;
+    flex-shrink: 0; /* No permitimos que se aplaste */
+    width: 100%;
+    padding: 10px;
     border-top: 1px solid #eee;
     background: white;
     display: flex;
-    gap: 10px;
+    gap: 8px;
     align-items: center;
 }
 
-input {
-    flex: 1;
-    padding: 12px 15px;
+/* Input de texto */
+.chat-input-area input {
+    flex-grow: 1;    /* Ocupa todo el ancho posible */
+    min-width: 0;    /* Evita que el input rompa el flexbox */
+    padding: 10px 15px;
     border: 1px solid #ddd;
     border-radius: 25px;
     outline: none;
     font-size: 14px;
-    transition: border-color 0.3s;
 }
 
-input:focus {
+.chat-input-area input:focus {
     border-color: #007bff;
 }
 
+/* Botón de enviar */
 button#send-btn {
+    flex-shrink: 0; /* Evita que el botón se haga pequeño */
     padding: 10px 20px;
     background: #007bff;
     color: white;
@@ -147,9 +144,32 @@ button#send-btn {
     border-radius: 25px;
     cursor: pointer;
     font-weight: 600;
-    transition: background 0.2s;
 }
 
 button#send-btn:hover {
     background: #0056b3;
+}
+
+/* =========================================
+   5. VERSIÓN MÓVIL (Sobrescribe lo anterior)
+   ========================================= */
+@media (max-width: 768px) {
+    #floating-chat-container {
+        width: 100% !important;
+        height: 100% !important;
+        bottom: 0 !important;
+        right: 0 !important;
+        border-radius: 0 !important;
+        top: 0 !important;
+        left: 0 !important;
+    }
+    
+    .chat-container {
+        border-radius: 0;
+    }
+    
+    /* Ajuste para que el teclado no tape el input en algunos móviles */
+    .chat-input-area {
+        padding-bottom: 20px; 
+    }
 }
