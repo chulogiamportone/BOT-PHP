@@ -1,85 +1,155 @@
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f4f4f9;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-}
+/* =========================================
+   ESTILOS GENERALES DEL CHAT (bot.css)
+   ========================================= */
+
+/* Nota: Eliminamos los estilos de 'body' para no romper tu página principal */
 
 .chat-container {
-    width: 350px;
-    height: 500px;
     background: white;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-    border-radius: 10px;
     display: flex;
     flex-direction: column;
     overflow: hidden;
+    /* Sombras suaves para dar profundidad */
+    box-shadow: 0 5px 25px rgba(0,0,0,0.2); 
 }
 
+/* =========================================
+   VERSION ESCRITORIO (Estilo Facebook)
+   ========================================= */
+/* Por defecto, asumimos pantalla grande */
+.chat-container {
+    width: 380px;      /* Ancho fijo cómodo */
+    height: 500px;     /* Altura fija */
+    border-radius: 15px 15px 0 0; /* Bordes redondeados arriba */
+    /* La posición la controla el div contenedor en el HTML, 
+       pero aquí aseguramos que llene ese espacio */
+}
+
+/* =========================================
+   VERSION MÓVIL (Pantalla Completa)
+   ========================================= */
+@media (max-width: 768px) {
+    /* Cuando la pantalla sea menor a 768px (Tablets y Celulares) */
+    
+    /* Forzamos al contenedor padre (el que pusimos en el HTML) a ocupar todo */
+    #floating-chat-container {
+        bottom: 0 !important;
+        right: 0 !important;
+        width: 100% !important;
+        height: 100% !important;
+        max-width: 100% !important;
+        border-radius: 0 !important;
+        z-index: 99999 !important; /* Por encima de todo, incluso del menú */
+    }
+
+    .chat-container {
+        width: 100%;
+        height: 100%;
+        border-radius: 0; /* Sin bordes redondeados en móvil */
+    }
+
+    .chat-header {
+        padding: 20px 15px; /* Cabecera un poco más grande para tocar fácil con el dedo */
+    }
+
+    .chat-input-area {
+        padding-bottom: 20px; /* Espacio extra abajo para teclados móviles */
+    }
+}
+
+/* =========================================
+   ELEMENTOS INTERNOS
+   ========================================= */
+
 .chat-header {
-    background: #007bff;
+    background: linear-gradient(135deg, #007bff, #0056b3); /* Degradado moderno */
     color: white;
     padding: 15px;
     text-align: center;
+    font-weight: 600;
+    font-family: 'Montserrat', sans-serif;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Ajuste para el botón de cerrar X */
+.chat-header .close-chat-btn {
+    font-size: 24px;
+    cursor: pointer;
+    padding: 0 10px;
 }
 
 .chat-box {
     flex: 1;
     padding: 15px;
     overflow-y: auto;
-    background: #f9f9f9;
+    background: #f4f6f9; /* Gris muy suave */
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 12px;
 }
 
+/* Estilos de los mensajes */
 .message {
     max-width: 80%;
     padding: 10px 15px;
-    border-radius: 20px;
-    font-size: 14px;
-    line-height: 1.4;
+    border-radius: 18px;
+    font-size: 15px;
+    line-height: 1.5;
+    word-wrap: break-word;
+    font-family: 'Segoe UI', sans-serif;
 }
 
 .bot-message {
     background: #e9ecef;
     color: #333;
     align-self: flex-start;
-    border-bottom-left-radius: 5px;
+    border-bottom-left-radius: 4px; /* Efecto "burbuja de chat" */
 }
 
 .user-message {
     background: #007bff;
     color: white;
     align-self: flex-end;
-    border-bottom-right-radius: 5px;
+    border-bottom-right-radius: 4px;
 }
 
+/* Área de input */
 .chat-input-area {
-    padding: 10px;
-    border-top: 1px solid #ddd;
+    padding: 15px;
+    border-top: 1px solid #eee;
+    background: white;
     display: flex;
     gap: 10px;
+    align-items: center;
 }
 
 input {
     flex: 1;
-    padding: 10px;
+    padding: 12px 15px;
     border: 1px solid #ddd;
-    border-radius: 20px;
+    border-radius: 25px;
     outline: none;
+    font-size: 14px;
+    transition: border-color 0.3s;
 }
 
-button {
+input:focus {
+    border-color: #007bff;
+}
+
+button#send-btn {
     padding: 10px 20px;
     background: #007bff;
     color: white;
     border: none;
-    border-radius: 20px;
+    border-radius: 25px;
     cursor: pointer;
+    font-weight: 600;
+    transition: background 0.2s;
 }
 
-button:hover { background: #0056b3; }
+button#send-btn:hover {
+    background: #0056b3;
+}

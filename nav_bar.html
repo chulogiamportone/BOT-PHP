@@ -6,20 +6,81 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Micael Medicina Integrativa</title>
 
-    <!-- Tipografía montserrat -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
         rel="stylesheet">
 
-    <!-- AOS CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" />
-    <!-- Favicon -->
+    
     <link rel="icon" href="/images/favicon.png">
 
     <link rel="stylesheet" href="/css/nav_bar.css">
+    
+    <link rel="stylesheet" href="/css/bot.css">
 
+    <style>
+        /* El botón flotante existente */
+        .btn-flotante-toggle {
+            position: fixed;
+            bottom: 50px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            background-color: #25d366; /* Puedes cambiar esto si ya no es solo WhatsApp */
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            border: none; /* Quitamos bordes por si se convierte en <button> */
+        }
 
+        .btn-flotante-toggle img {
+            width: 35px;
+            height: 35px;
+            object-fit: contain;
+        }
+
+        .btn-flotante-toggle:hover {
+            transform: scale(1.1);
+            box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Contenedor del Chat Flotante (oculto por defecto) */
+        #floating-chat-container {
+            position: fixed;
+            bottom: 120px; /* Un poco más arriba del botón */
+            right: 20px;
+            z-index: 9998; /* Justo debajo del botón en prioridad de clic, pero visualmente arriba */
+            display: none; /* Oculto inicialmente */
+            
+            /* Aseguramos que el estilo del bot no rompa el ancho en móviles */
+            max-width: 350px; 
+            width: 90%;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            border-radius: 10px;
+            overflow: hidden;
+            background: white;
+        }
+
+        /* Clase para mostrar el chat */
+        #floating-chat-container.active {
+            display: block;
+            animation: fadeInUp 0.3s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
 </head>
 
 <body>
@@ -27,7 +88,6 @@
         <div class="NavBar">
             <div class="RectangleNavBar"></div>
             <a href="/" class="MarcaMicael">
-
                 <img class="MicaelMarca1" src="/images/navbar/Micael_marca.png" alt="Micael marca 1">
             </a>
             <div class="Menu" id="menuButton">
@@ -39,12 +99,11 @@
             </div>
         </div>
     </section>
-    <div class="space">
+    
+    <div class="space"></div>
 
-    </div>
     <section name="Menu_section">
         <div class="Menu2" id="menuContent">
-
             <div class="menu_item" style="top: 16.06px;">
                 <a type="button" class="menu_button" id="menu_button" data-view="/#tratamientos">Tratamientos</a>
             </div>
@@ -58,91 +117,76 @@
                 <a type="button" class="menu_button" data-view="" href="blog">Temas Micael</a>
             </div>
         </div>
-
-
     </section>
 
-</body>
-<a href="https://wa.me/+5492613330193" class="btn-flotante-whatsapp" target="_blank">
-    <img src="images/Home/boton-wsp.png" alt="WhatsApp">
-</a>
+    <a href="javascript:void(0)" class="btn-flotante-toggle" id="chatToggleBtn">
+        <img src="/images/Home/boton-wsp.png" alt="Chat Bot">
+    </a>
 
-<style>
-    .btn-flotante-whatsapp {
-        position: fixed;
-        /* Mantiene el botón fijo al hacer scroll */
-        bottom: 50px;
-        /* Distancia desde abajo */
-        right: 20px;
-        /* Distancia desde la derecha */
-        width: 60px;
-        /* Ancho del botón */
-        height: 60px;
-        /* Alto del botón */
-        background-color: #25d366;
-        /* Color verde oficial de WhatsApp */
-        color: white;
-        border-radius: 50%;
-        /* Lo hace redondo */
-        text-align: center;
-        box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
-        /* Sombra suave para efecto flotante */
-        z-index: 9999;
-        /* Asegura que esté por encima de todo */
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        text-decoration: none;
-        transition: transform 0.3s ease;
-        /* Animación suave al pasar el mouse */
-    }
+    <div id="floating-chat-container">
+        <div class="chat-container">
+            <div class="chat-header">
+                <h3>Asistente Virtual</h3>
+                <span id="close-chat-x" style="cursor:pointer; float:right; font-size: 20px;">&times;</span>
+            </div>
+            <div class="chat-box" id="chat-box">
+                <div class="message bot-message">Hola, ¿en qué te ayudo?</div>
+            </div>
+            <div class="chat-input-area">
+                <input type="text" id="user-input" placeholder="Escribe tu mensaje..." autocomplete="off">
+                <button id="send-btn">Enviar</button>
+            </div>
+        </div>
+    </div>
 
-    /* Estilo para la imagen dentro del botón */
-    .btn-flotante-whatsapp img {
-        width: 35px;
-        /* Tamaño del icono dentro del círculo */
-        height: 35px;
-        object-fit: contain;
-    }
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    
+    <script src="/js/bot.js"></script>
 
-    /* Efecto Hover (Opcional): Crece un poco al pasar el mouse */
-    .btn-flotante-whatsapp:hover {
-        transform: scale(1.1);
-        box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.4);
-    }
-</style>
-<!-- AOS Animation Library -->
-<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-<script>
-    document.addEventListener("DOMContentLoaded", () => {
-        console.log("✅ DOM listo, JS cargado");
-    });
-</script>
-<script>
-    document.querySelectorAll('a[href^="/#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            // 1. Detectamos si ya estamos en la página de inicio
-            if (window.location.pathname === '/' || window.location.pathname === '/index.php') {
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            console.log("✅ DOM listo, Navegación y Chat cargados");
 
-                // 2. Extraemos el ID del destino (ej: #Contacto_Index)
-                const targetId = this.getAttribute('href').substring(1); // Quita la "/" inicial
-                const targetElement = document.querySelector(targetId);
+            // --- Lógica del Scroll Suave (Tu código original) ---
+            document.querySelectorAll('a[href^="/#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    if (window.location.pathname === '/' || window.location.pathname === '/index.php') {
+                        const targetId = this.getAttribute('href').substring(1);
+                        const targetElement = document.querySelector(targetId);
+                        if (targetElement) {
+                            e.preventDefault();
+                            targetElement.scrollIntoView({ behavior: 'smooth' });
+                            history.pushState(null, null, targetId);
+                        }
+                    }
+                });
+            });
 
-                if (targetElement) {
-                    e.preventDefault(); // Evita que la página parpadee o recargue
+            // --- Lógica para Abrir/Cerrar el Chat ---
+            const toggleBtn = document.getElementById('chatToggleBtn');
+            const chatContainer = document.getElementById('floating-chat-container');
+            const closeX = document.getElementById('close-chat-x');
 
-                    // 3. Hacemos scroll suave manual
-                    targetElement.scrollIntoView({
-                        behavior: 'smooth'
-                    });
-
-                    // Opcional: Actualiza la URL sin recargar
-                    history.pushState(null, null, targetId);
-                }
+            // Función para alternar visibilidad
+            function toggleChat() {
+                chatContainer.classList.toggle('active');
             }
-            // Si NO estamos en el index, dejamos que el enlace funcione normal y nos lleve allí.
-        });
-    });
-</script>
 
+            // Click en el botón flotante
+            toggleBtn.addEventListener('click', (e) => {
+                e.preventDefault(); // Evita cualquier salto
+                toggleChat();
+            });
+
+            // Click en la X dentro del chat
+            if(closeX) {
+                closeX.addEventListener('click', () => {
+                    chatContainer.classList.remove('active');
+                });
+            }
+        });
+    </script>
+    
+
+</body>
 </html>
