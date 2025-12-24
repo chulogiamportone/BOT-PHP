@@ -1,0 +1,24 @@
+{
+    "intents": [
+        {
+            "tag": "saludo",
+            "patterns": ["hola", "buenas", "que tal", "inicio"],
+            "responses": ["¡Hola! ¿En qué puedo ayudarte hoy?", "¡Buenas! Soy tu asistente virtual."]
+        },
+        {
+            "tag": "precios",
+            "patterns": ["cuanto cuesta", "precio", "tarifas", "valor"],
+            "responses": ["Nuestros planes comienzan desde $10/mes.", "Puedes ver las tarifas en la sección de precios."]
+        },
+        {
+            "tag": "despedida",
+            "patterns": ["chau", "adios", "hasta luego"],
+            "responses": ["¡Hasta pronto!", "Gracias por contactarnos."]
+        },
+        {
+            "tag": "fallback",
+            "patterns": [],
+            "responses": ["No estoy seguro de entender eso. ¿Podrías reformularlo?", "Aún estoy aprendiendo, intenta preguntar de otra forma."]
+        }
+    ]
+}

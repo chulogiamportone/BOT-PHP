@@ -4,7 +4,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <base href="https://micaelmedicinaintegrativa.com.ar/">
     <title>Micael Medicina Integrativa</title>
 
     <!-- Tipografía montserrat -->
@@ -19,7 +18,7 @@
     <!-- AOS JS -->
     <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
 
-    
+
 
     <!-- Hojas de estilo -->
 
@@ -33,7 +32,7 @@
 <body>
     <div class="main-wrapper">
         <header style="height: 150px;">
-            <div data-include="nav_bar.html"></div>
+            <div data-include="/nav_bar.html"></div>
         </header>
         <section name="Slider" id="Slider_Section">
             <a href="/blog" class="slider-top-btn">VER MÁS</a>
@@ -77,9 +76,10 @@
 
         <section name="Agenda_Index" id="profesionales">
             <div class="Agenda">
-                
+
                 <a href="https://wa.me/+5492613330193" class="Rectangle11" style="z-index: 10;"></a>
-                <a href="https://wa.me/+5492613330193" class="AgendeSuPrimeraConsulta" style="z-index: 11;">Agende su primera
+                <a href="https://wa.me/+5492613330193" class="AgendeSuPrimeraConsulta" style="z-index: 11;">Agende su
+                    primera
                     consulta</a>
                 <div class="Agenda_text">
                     Acompañamos a cada paciente en el camino de una mejor calidad de vida. Tratamientos personalizados,
@@ -160,7 +160,7 @@
                 </div>
             </div>
         </section>
-        
+
         <section name="Domicilio_Index" id="Domicilio_Index">
             <div class="Domicilio">
                 <div class="Domicilio_title">DOMICILIO</div>
@@ -199,7 +199,7 @@
 
         </section>
         <section name="Footer" id="Footer_Section">
-            <div data-include="footer.html"></div>
+            <div data-include="/footer.html"></div>
         </section>
     </div>
     <!--<script src="js/slider.js"></script>-->
@@ -210,12 +210,8 @@
     <script src="/js/slider.js"></script>
 
     <script src="/js/ajuste_escala.js"></script>
-    <script>
-        window.initCards({ jsonUrl: '/data/tratamientos.json', containerId: 'cards-container' });
-        window.onCardMoreInfo = (card) => {
-            alert(`Más información: ${card.title}`);
-        };
-    </script>
+
+    
 
 </body>
 
